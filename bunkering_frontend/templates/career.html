@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Career {% endblock %}
+{% block style %}
+    .custom-select {
+    border: 1px solid inherit;
+    width: 100%;
+    border-radius: 4px;
+    }
+
+    .custom-select:focus {
+    outline: red;
+    }
+
+    .custom-select option {
+    font-size: 10px; /* Set font size for all options */
+    }
+{% endblock %}
+{% block content %}
+    <!-- ======= Quote Section ======= -->
+    <section id="career" class="contact mt-8">
+        <div class="container" data-aos="fade-down">
+
+            <div class="section-title">
+                <h2>Career</h2>
+                <p>Please submit the form below to send CV</p>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <form action="" method="post" role="form" class="php-email-form">
+                        <h1 class="mb-3"><strong>Company Info</strong></h1>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="name"><small>Name*</small></label>
+                                <input style="height: 50%" type="text" name="name" class="form-control" id="name" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="name"><small>Mobile*</small></label>
+                                <input type="email" style="height: 50%" class="form-control" name="email" id="email" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="name"><small>Email*</small></label>
+                                <input type="text" name="name" style="height: 50%" class="form-control" id="name" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="name"><small>Qualification*</small></label>
+                                <input style="height: 50%" type="text" name="name" class="form-control" id="name" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="name"><small>Experience*</small></label>
+                                <input type="text" style="height: 50%" class="form-control" name="experience" id="experience" required>
+                            </div>
+                            <div class="form-group col-md-4 mt-4">
+                                <div class="custom-select-wrapper">
+                                    <select class="custom-select" id="country" required>
+                                        <option selected style="font-size: 10px">Select Country</option>
+                                        {% for key, country in countryList.items %}
+                                            <option value="{{ key }}"> {{ country }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="name"><small>City*</small></label>
+                                <input style="height: 50px" type="text" name="name" class="form-control" id="name" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="name"><small>ZipCode*</small></label>
+                                <input type="text" style="height: 50px" class="form-control" name="experience" id="experience" required>
+                            </div>
+                            <div class="form-group col-md-4 mt-2">
+                                <label for="formFile" class="btn btn-outline-secondary mt-6" style="outline: none">
+                                    Upload CV
+                                </label>
+                                <input class="form-control" type="file" style="opacity: 0; position: absolute; top: -1000em;" id="formFile">
+                            </div>
+
+                        </div>
+
+                        <div class="my-3">
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Contact Section -->
+
+{% endblock content %}
