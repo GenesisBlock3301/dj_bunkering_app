@@ -1,0 +1,98 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .header {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .grid-item {
+            margin-bottom: 20px;
+        }
+        .grid-item label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">New Inquiry</div>
+    <div class="grid-container">
+        <div class="grid-item">
+            <label>Company Name:</label>
+            <div>{{ company_name }}</div>
+        </div>
+        <div class="grid-item">
+            <label>Contact Person:</label>
+            <div>{{ contact_person }}</div>
+        </div>
+        <div class="grid-item">
+            <label>Telephone:</label>
+            <div>{{ telephone }}</div>
+        </div>
+        <div class="grid-item">
+            <label>Email:</label>
+            <div>{{ email }}</div>
+        </div>
+        <div class="grid-item">
+            <label>Product 1:</label>
+            <div>{{ select_value_1 }}</div>
+        </div>
+        <div class="grid-item">
+            <label>Product 2:</label>
+            <div>{{ select_value_2 }}</div>
+        </div>
+        <div class="grid-item">
+            <label>Quantity:</label>
+            <div>{{ quantity }}</div>
+        </div>
+        <div class="grid-item">
+            <label>Vessel Name:</label>
+            <div>{{ vessel_name }}</div>
+        </div>
+        <div class="grid-item">
+            <label>Port:</label>
+            <div>{{ port }}</div>
+        </div>
+        <div class="grid-item">
+            <label>Berth Location:</label>
+            <div>{{ birth_loc }}</div>
+        </div>
+        <div class="grid-item">
+            <label>EDA (Estimated Date of Arrival):</label>
+            <div>{{ eda }}</div>
+        </div>
+        <div class="grid-item">
+            <label>ETA (Estimated Time of Arrival):</label>
+            <div>{{ eta }}</div>
+        </div>
+        <div class="grid-item">
+            <label>ETD (Estimated Time of Departure):</label>
+            <div>{{ etd }}</div>
+        </div>
+        <div class="grid-item">
+            <label>Agent:</label>
+            <div>{{ agent }}</div>
+        </div>
+        <div class="grid-item">
+            <label>Message:</label>
+            <div>{{ message }}</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

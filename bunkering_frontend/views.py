@@ -1,9 +1,13 @@
 import logging
 from django.shortcuts import render, redirect
 from django.views import View
-from django.utils.safestring import mark_safe
-from django.core.mail import send_mail
-from .helpers import get_bunker_fuels, get_services, get_check_input_values, get_country_list
+from django.core.mail import EmailMessage
+from django.contrib import messages
+from django.urls import reverse_lazy
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from .helpers import (get_bunker_fuels, get_services, get_check_input_values, get_country_list, get_team_members,
+                      send_inquiry_email)
 
 
 class HomeView(View):
@@ -24,39 +28,7 @@ class BunkeringView(View):
 
 class TeamView(View):
     def get(self, request):
-        teamMembers = [
-            {'name': "Mohammed Rafiqul Islam", 'designation': mark_safe("<b>Chairman</b>"),
-             'img': '/assets/img/team/boss.jpeg',
-             'bio': mark_safe("<b>Mohammed Rafiqul Islam</b> started his journey as a broker in Khatungonj, "
-                              "Chittagong. Later on he joined Abul Khair Group and gathered many knowledges about Industry "
-                              "handling, Import – Export, Trading and many more. He started his own Import – Export firm named"
-                              " as RR Trading Corporation in 1980. After that he saw many problems in the bunkering Industry of "
-                              "Bangladesh then he saw the opportunity to bring a better solution to the Industry then Sea "
-                              "marine fuel suppliers & Co was established in 1990. Later He established Bricks manufacturing "
-                              "company in 2008 and Real estate company named RR RAINBOW BD HOLDINGS LTD in 2021.")},
-            {
-                'name': "Mohammed Amanur Rashid", 'designation': mark_safe("<b>Managing partner</b>"),
-                'img': "/assets/img/team/amanur.jpeg",
-                'bio': mark_safe("<b>Md. Amanur Rashid</b> is a Marine Engineer by profession, before joining with us "
-                                 "he served in American Bureau of Shipping (ABS), Singapore as Marine Surveyor. He was assigned in "
-                                 "new building construction and successfully delivered three container ships and two offshore supply"
-                                 " vessels as new construction surveyor. His career at a glance: After passing out from Marine "
-                                 "Academy, Chittagong, Bangladesh in 1991 he joined Neptune Ship management services, Singapore "
-                                 "as Assistant Engineer. He joined Anglo Eastern Ship management UK as a Second Engineer in 1998 "
-                                 "and was promoted to the rank of Chief Engineer in 2003. He has enormous experience in Chemical"
-                                 " Tanker, Crude Oil Tanker, Product Tanker and Bulk Carrier.Joined in Ocean Tankers Pte Ltd, "
-                                 "Singapore, as Technical Superintendent in 2004. He also served DNV Petroleum Services Singapore,"
-                                 " as Technical Advisor\n")},
-            {'name': "Mohammed Rezaul Islam ", 'designation': mark_safe("<b>Managing director</b>"),
-             'img': "/assets/img/team/rezaul.jpeg",
-             'bio': mark_safe(
-                 "<b>Mohammed Rezaul Islam</b> is a managing director of RR RAINBOW BD HOLDINGS LTD. He completed his "
-                 "High School from the BAF SHAHEEN COLLEGE CHATTOGRAM in 2018. He later went on to complete his "
-                 "undergraduate from the Independent University Bangladesh, in Bachelor of Business Administration ("
-                 "Hons) with a major in Accounting and Finance. He is a big believer in technological innovation-led "
-                 "development to increase efficiency within the work environment and the fostering of overall "
-                 "organizational growth.")},
-        ]
+        teamMembers = get_team_members()
         return render(request, 'team.html', context={
             'teamMembers': teamMembers
         })
@@ -79,6 +51,40 @@ class RequestQuotationView(View):
             'check_inputs_2': check_inputs_2
         })
 
+    def post(self, request):
+        data = request.POST
+        # company_name = data.get('company_name', '')
+        # contact_person = data.get('contact_person', '')
+        # telephobe = data.get('telephone', '')
+        # email = data.get('email', '')
+        # select_value_1 = data.get('select_value_1', '')
+        # select_value_2 = data.get('select_value_1', '')
+        # quantity = data.get('quantity', '')
+        # vessel_name = data.get('vessel_name', '')
+        # port = data.get('port', '')
+        # birth_loc = data.get('birth_loc', '')
+        # eda = data.get('eda', '')
+        # eta = data.get('eta', '')
+        # edd = data.get('etd', '')
+        # etd = data.get('eta', '')
+        # agent = data.get('agent', '')
+        # message = data.get('message', '')
+        try:
+            context = send_inquiry_email(data)
+            subject = f"Inquiry from {context['company_name']}"
+            html_message = render_to_string('email_template/quote_template.html', context)
+            # plain_message = strip_tags(html_message)
+            from_email = context['email']
+            to_email = 'freelancersifat380@gmail.com'
+
+            email = EmailMessage(subject, html_message, from_email, [to_email])
+            email.content_subtype = 'html'
+            email.send()
+        except Exception as e:
+            logging.error('Error sending email: %s', e)
+            messages.error(request, f"Sending message failed: {e}")
+        return redirect(reverse_lazy('quote'))
+
 
 class ContactView(View):
     def get(self, request):
@@ -90,19 +96,27 @@ class ContactView(View):
         email = data.get('email', '')
         message = data.get('message', '')
         subject = data.get('subject', '')
-        try:
-            send_mail(
-                subject=subject,
-                message=f"From: {name} ({email})\n\n{message}",  # Include sender details in message
-                from_email=email,
-                recipient_list=['freelancersifat380@gmail.com'],
-                fail_silently=False,  # Raise an exception on failure
-            )
-            return redirect('contact')
-        except Exception as e:
-            # Handle email sending errors gracefully (e.g., log the error)
-            logging.error(str(e))
-            return render(request, 'contact.html', {'error_message': 'Email sending failed. Please try again later.'})
+        if name and email and subject and message:
+            email_subject = f"Contact Form: {subject} (from {name})"
+            email_body_html = render_to_string('email_template/contact_template.html', {
+                'name': name, 'email': email, 'subject': subject, 'message': message,
+            })
+            try:
+                email_message = EmailMessage(
+                    subject=email_subject,
+                    body=email_body_html,
+                    from_email=email,
+                    to=['freelancersifat380@gmail.com'],
+                )
+                email_message.content_subtype = "html"  # Set the email message to use HTML
+                email_message.send(fail_silently=False)
+                messages.success(request, 'Message successfully sent to admin')
+            except Exception as e:
+                logging.error('Error sending email: %s', e)
+                messages.error(request, f"Sending message failed: {e}")
+        else:
+            messages.error(request, 'Fill all mandatory field.')
+        return redirect(reverse_lazy('contact'))
 
 
 class TermsAndConditionView(View):

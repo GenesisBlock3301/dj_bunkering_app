@@ -11,43 +11,35 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <form role="form" class="php-email-form">
-                        <p v-if="errors.length">
-                            <b>Please correct the following error(s):</b>
-                        <ul>
-                            <li v-for="error in errors">{{ error }}</li>
-                        </ul>
-                        </p>
+                    <form action="{% url 'quote' %}" method="post" role="form" class="php-email-form" id="quote-form">
+                    {% csrf_token %}
                         <h1 class="mb-3"><strong>Company Info</strong></h1>
                         <div class="row">
                             <div class="form-group col-md-3">
-                                <label for="name"><small>Company Name</small></label>
+                                <label for="name"><small>Company Name*</small></label>
                                 <input style="height: 50%"
                                        type="text"
                                        name="company_name"
-                                       class="form-control"
-                                       v-model="form_fields.companyName">
+                                       class="form-control" required/>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="name"><small>Contact Person</small></label>
+                                <label for="name"><small>Contact Person*</small></label>
                                 <input type="text" style="height: 50%"
                                        class="form-control"
-                                       name="contact"
-                                       v-model="form_fields.contactPerson">
+                                       name="contact_person" required/>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="name"><small>Telephone</small></label>
-                                <input type="text" name="telephone"
+                                <label for="name"><small>Telephone*</small></label>
+                                <input type="text"
+                                       name="telephone"
                                        style="height: 50%"
-                                       class="form-control"
-                                       v-model="form_fields.telephone">
+                                       class="form-control" required/>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="name"><small>Email</small></label>
                                 <input type="email" style="height: 50%"
                                        class="form-control"
-                                       name="email"
-                                       v-model="form_fields.email">
+                                       name="email" required/>
                             </div>
                         </div>
                         <h1 class="mb-2"><strong>Product</strong></h1>
@@ -56,10 +48,11 @@
                                 {% for check_input in check_inputs_1 %}
                                     <div class="form-check">
                                         <input style="width: 15px; height: 15px; border-radius: 50%"
-                                                class="form-check-input flexRadioDefault1"
+                                                class="form-check-input"
                                                 type="radio"
                                                 name="select_value_1"
                                                 value="{{ check_input.value }}"
+{#                                               required
                                         />
                                         <label class="form-check-label" for="flexRadioDefault1">
                                             <small>{{ check_input.value }}</small>
@@ -68,37 +61,16 @@
                                 {% endfor %}
                             </div>
                             <div class="col-md-3">
-                                {% for check_input in check_inputs_2 %}{#<style>#}
-{##}
-{#    input[type="radio"] {#}
-{#    appearance: none;#}
-{#    -webkit-appearance: none;#}
-{#    -moz-appearance: none;#}
-{#    width: 15px;#}
-{#    height: 15px;#}
-{#    border-radius: 50%;#}
-{#    outline: none;#}
-{#    cursor: pointer;#}
-{#    }#}
-{##}
-{#    input[type="radio"]:checked {#}
-{#    background-color: #375173;#}
-{#    }#}
-{##}
-{#    .form-check-label {#}
-{#    margin-left: 8px;#}
-{#    cursor: pointer;#}
-{#    }#}
-{#</style>#}
+                                {% for check_input in check_inputs_2 %}
                                     <div class="form-check">
                                         <input
                                                 style="width: 15px; height: 15px; border-radius: 50%"
                                                 class="form-check-input"
                                                 type="radio"
                                                 name="select_value_2"
-                                                id="flexRadioDefault1"
                                                 value="{{ check_input.value }}"
-                                        >
+                                                required
+                                        />
                                         <label class="form-check-label" for="flexRadioDefault1">
                                             <small>{{ check_input.value }}</small>
                                         </label>
@@ -106,89 +78,82 @@
                                 {% endfor %}
                             </div>
                             <div class="col-md-3">
-                                <label for="name"><small>Quantity</small></label>
+                                <label for="name"><small>Quantity*</small></label>
                                 <input
                                         type="number"
                                         style="height: 35%"
                                         class="form-control"
-                                        name="quantity"
-                                >
+                                        name="quantity" required/>
                             </div>
                         </div>
                         <h1 class="mb-3"><strong>Part & Time Info</strong></h1>
                         <div class="row">
                             <div class="form-group col-md-3">
-                                <label for="name"><small>Vessel Name</small></label>
+                                <label for="name"><small>Vessel Name*</small></label>
                                 <input
                                         type="text"
                                         name="vessel_name" style="height: 50%"
-                                        class="form-control"
-                                >
+                                        class="form-control" required/>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="name"><small>Port</small></label>
+                                <label for="name"><small>Port*</small></label>
                                 <input
                                         type="text"
                                         class="form-control"
                                         style="height: 50%"
-                                        name="port">
+                                        name="port" required/>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="name"><small>Berth/Location</small></label>
+                                <label for="name"><small>Berth/Location*</small></label>
                                 <input
-                                        type="text" name="name"
-                                        class="form-control" style="height: 50%"
-                                >
+                                        type="text" name="birth_loc"
+                                        class="form-control" style="height: 50%" required/>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="name"><small>Estimated Date of Arrival</small></label>
+                                <label for="name"><small>Estimated Date of Arrival*</small></label>
                                 <input
                                         type="date"
                                         class="form-control"
                                         style="height: 50%"
-                                        name="eda"
-                                >
+                                        name="eda" required/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-3">
-                                <label for="name"><small>Estimated Time of Arrival</small></label>
+                                <label for="name"><small>Estimated Time of Arrival*</small></label>
                                 <input
                                         type="time"
                                         style="height: 50%"
                                         name="eta"
                                         class="form-control"
-                                        id="estimation_time_of_arrival"
-                                >
+                                        id="estimation_time_of_arrival" required/>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="name"><small>Estimated Date of Departure</small></label>
+                                <label for="name"><small>Estimated Date of Departure*</small></label>
                                 <input
                                         type="date" class="form-control"
-                                        style="height: 50%" name="estimation_time_of_departure"
-                                >
+                                        style="height: 50%" name="etd" required/>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="name"><small>Estimated Time of Departure</small></label>
+                                <label for="name"><small>Estimated Time of Departure*</small></label>
                                 <input
                                         type="time"
-                                        name="name"
+                                        name="etd"
                                         class="form-control"
                                         style="height: 50%"
-                                        value="00:00">
+                                        value="00:00" required/>
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="name"><small>Agent</small></label>
+                                <label for="name"><small>Agent*</small></label>
                                 <input type="text" class="form-control" style="height: 50%"
                                        name="agent"
-                                       id="email"
-                                >
+                                       id="email" required/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <label for="name">Message*</label>
-                                <textarea class="form-control" name="message" rows="1"></textarea>
+                                <label for="name" style="margin-top: -2px">Message*</label>
+                                <textarea class="form-control" name="message" rows="1" required></textarea>
                             </div>
                         </div>
                         <div class="text-center">
