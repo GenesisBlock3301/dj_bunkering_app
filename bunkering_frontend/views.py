@@ -1,11 +1,12 @@
 import logging
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.views import View
 from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.template.loader import render_to_string
-from django.utils.html import strip_tags
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
 from .helpers import (get_bunker_fuels, get_services, get_check_input_values, get_country_list, get_team_members,
                       send_inquiry_email)
 
@@ -41,6 +42,43 @@ class CareerView(View):
             'countryList': countryList
         })
 
+    def post(self, request):
+        try:
+            name = request.POST.get('name')
+            mobile = request.POST.get('mobile')
+            email = request.POST.get('email')
+            qualification = request.POST.get('qualification')
+            experience = request.POST.get('experience')
+            city = request.POST.get('city')
+            zipcode = request.POST.get('zipcode')
+            # Handle file upload
+            uploaded_file = request.FILES['form_file']
+            file_name = default_storage.save(uploaded_file.name, ContentFile(uploaded_file.read()))
+            file_url = default_storage.url(file_name)
+            full_file_url = request.build_absolute_uri(file_url)
+
+            # Send email
+            subject = 'New Form Submission'
+            to_email = 'freelancersifat380@gmail.com'
+            email_content = render_to_string('email_template/career_template.html', {
+                'name': name,
+                'mobile': mobile,
+                'email': email,
+                'qualification': qualification,
+                'experience': experience,
+                'city': city,
+                'zipcode': zipcode,
+                'file_url': full_file_url,
+            })
+            email = EmailMessage(subject, email_content, to=[to_email])
+            email.content_subtype = 'html'
+            email.send()
+            messages.success(request, 'Message successfully sent to admin')
+        except Exception as e:
+            logging.error('Error sending email: %s', e)
+            messages.error(request, f"Sending message failed: {e}")
+        return redirect('career')
+
 
 class RequestQuotationView(View):
     def get(self, request):
@@ -52,37 +90,20 @@ class RequestQuotationView(View):
         })
 
     def post(self, request):
-        data = request.POST
-        # company_name = data.get('company_name', '')
-        # contact_person = data.get('contact_person', '')
-        # telephobe = data.get('telephone', '')
-        # email = data.get('email', '')
-        # select_value_1 = data.get('select_value_1', '')
-        # select_value_2 = data.get('select_value_1', '')
-        # quantity = data.get('quantity', '')
-        # vessel_name = data.get('vessel_name', '')
-        # port = data.get('port', '')
-        # birth_loc = data.get('birth_loc', '')
-        # eda = data.get('eda', '')
-        # eta = data.get('eta', '')
-        # edd = data.get('etd', '')
-        # etd = data.get('eta', '')
-        # agent = data.get('agent', '')
-        # message = data.get('message', '')
         try:
+            data = request.POST
             context = send_inquiry_email(data)
             subject = f"Inquiry from {context['company_name']}"
             html_message = render_to_string('email_template/quote_template.html', context)
-            # plain_message = strip_tags(html_message)
             from_email = context['email']
             to_email = 'freelancersifat380@gmail.com'
-
             email = EmailMessage(subject, html_message, from_email, [to_email])
             email.content_subtype = 'html'
             email.send()
+            messages.success(request, 'Quotation send successfully.')
         except Exception as e:
             logging.error('Error sending email: %s', e)
-            messages.error(request, f"Sending message failed: {e}")
+            messages.error(request, f"Sending sending quotation failed: {e}")
         return redirect(reverse_lazy('quote'))
 
 

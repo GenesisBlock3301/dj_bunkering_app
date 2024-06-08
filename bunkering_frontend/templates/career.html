@@ -23,12 +23,23 @@
 
             <div class="section-title">
                 <h2>Career</h2>
-                <p>Please submit the form below to send CV</p>
+                {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p>Please submit the form below to send CV</p>
+                {% endif %}
             </div>
             <div class="container">
                 <div class="row">
-                    <form action="" method="post" role="form" class="php-email-form">
-                        <h1 class="mb-3"><strong>Company Info</strong></h1>
+                    <form action="" method="post" role="form" enctype="multipart/form-data" class="php-email-form">
+                    {% csrf_token %}
+                        <h1 class="mb-3"><strong>Personal Info</strong></h1>
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for="name"><small>Name*</small></label>
@@ -36,17 +47,17 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="name"><small>Mobile*</small></label>
-                                <input type="email" style="height: 50%" class="form-control" name="email" id="email" required>
+                                <input type="text" style="height: 50%" class="form-control" name="mobile" id="mobile" required>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="name"><small>Email*</small></label>
-                                <input type="text" name="name" style="height: 50%" class="form-control" id="name" required>
+                                <input type="email" name="email" style="height: 50%" class="form-control" id="email" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for="name"><small>Qualification*</small></label>
-                                <input style="height: 50%" type="text" name="name" class="form-control" id="name" required>
+                                <input style="height: 50%" type="text" name="qualification" class="form-control" id="qualification" required>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="name"><small>Experience*</small></label>
@@ -66,21 +77,23 @@
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for="name"><small>City*</small></label>
-                                <input style="height: 50px" type="text" name="name" class="form-control" id="name" required>
+                                <input style="height: 50px" type="text" name="city" class="form-control" id="city" required>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="name"><small>ZipCode*</small></label>
-                                <input type="text" style="height: 50px" class="form-control" name="experience" id="experience" required>
+                                <input type="text" style="height: 50px" class="form-control" name="zipcode" id="zipcode" required>
                             </div>
                             <div class="form-group col-md-4 mt-2">
                                 <label for="formFile" class="btn btn-outline-secondary mt-6" style="outline: none">
                                     Upload CV
                                 </label>
-                                <input class="form-control" type="file" style="opacity: 0; position: absolute; top: -1000em;" id="formFile">
+                                <input name="form_file" class="form-control" type="file"
+                                       style="opacity: 0; position: absolute; top: -1000em;"
+                                       id="formFile" accept=".pdf,.doc,.docx">
+                                <span id="fileName" style="display: block; margin-top: 10px">No file chosen</span>
+                                <span id="fileSizeError" style="display: none; color: red;">File size exceeds 1 MB limit</span>
                             </div>
-
                         </div>
-
                         <div class="my-3">
                             <div class="loading">Loading</div>
                             <div class="error-message"></div>

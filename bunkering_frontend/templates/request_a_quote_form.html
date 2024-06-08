@@ -7,7 +7,17 @@
         <div class="container" data-aos="fade-down">
             <div class="section-title">
                 <h2>Request a quote</h2>
-                <p>Please submit the form below to request a quote.</p>
+                {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <p>Please submit the form below to request a quote.</p>
+                {% endif %}
             </div>
             <div class="container">
                 <div class="row">

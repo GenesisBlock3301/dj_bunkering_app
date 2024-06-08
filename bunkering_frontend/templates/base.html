@@ -51,15 +51,11 @@
             </nav>
         </div>
     </header>
-
     {% block content %}
 
     {% endblock content %}
     <!-- ======= Footer ======= -->
     <footer id="footer">
-        <!--    <div class="container footer-bottom clearfix">-->
-
-        <!--    </div>-->
         <div class="footer-top">
             <div class="container">
                 <div class="row">
@@ -73,7 +69,6 @@
                             <strong>Email:</strong> info@example.com<br>
                         </p>
                     </div>
-
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Useful Links</h4>
                         <ul>
@@ -82,7 +77,6 @@
                             {% endfor %}
                         </ul>
                     </div>
-
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Our Services</h4>
                         <ul>
@@ -91,7 +85,6 @@
                             {% endfor %}
                         </ul>
                     </div>
-
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Our Social Networks</h4>
                         <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
@@ -113,10 +106,6 @@
                 &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
                 Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
             </div>
         </div>
@@ -157,22 +146,68 @@
             // Mark active link based on URL path
             function setActiveLink() {
                 let path = window.location.pathname;
+                // Remove trailing slash if present
+                if (path.endsWith('/')) {
+                    path = path.slice(0, -1);
+                }
+                console.log("Current path:", path); // Debugging line
+
                 $('#navbar ul li a').each(function() {
-                    if ($(this).attr('href') === path) {
+                    let href = $(this).attr('href');
+                    console.log("Element href:", href); // Debugging line
+                    // Remove trailing slash from href if present
+                    if (href && href.endsWith('/')) {
+                        href = href.slice(0, -1);
+                    }
+                    if (href === path) {
                         $(this).addClass('active');
                     } else {
                         $(this).removeClass('active');
                     }
                 });
             }
-
+            $(document).ready(function() {
+                setActiveLink();
+            });
             setActiveLink();
+        });
+        document.getElementById('formFile').addEventListener('change', function() {
+            var _fileName = this.files[0].name;
+            document.getElementById('fileName').textContent = _fileName;
+        });
+        document.getElementById('formFile').addEventListener('change', function() {
+            var fileInput = this;
+            var fileSize = fileInput.files[0].size; // in bytes
+            var maxSize = 1024 * 1024; // 1MB in bytes
 
-            // Load footer component content
-            $('#footer-component').load('path/to/FooterComponent.html');
+            // Check if file size exceeds the maximum allowed size
+            if (fileSize > maxSize) {
+                alert('File size exceeds the maximum limit of 1MB. Please choose a smaller file.');
+                // Reset the file input to clear the selected file
+                fileInput.value = '';
+                // Update the file name display to show 'No file chosen'
+                document.getElementById('fileName').textContent = 'No file chosen';
+            } else {
+                // File size is within the limit, display the selected file name
+                var fileName = fileInput.files[0].name;
+                document.getElementById('fileName').textContent = fileName;
+            }
+        });
+        document.getElementById('formFile').addEventListener('change', function() {
+            var fileInput = this;
+            var fileSize = fileInput.files[0].size; // Size in bytes
+            var maxSize = 1024 * 1024; // 1 MB in bytes
+
+            if (fileSize > maxSize) {
+                document.getElementById('fileName').textContent = 'No file chosen';
+                document.getElementById('fileSizeError').style.display = 'block';
+                fileInput.value = ''; // Clear the selected file
+            } else {
+                document.getElementById('fileName').textContent = fileInput.files[0].name;
+                document.getElementById('fileSizeError').style.display = 'none';
+            }
         });
     </script>
-
 </div>
 <script src="{% static '/assets/vendor/aos/aos.js' %}"></script>
 <script src="{% static '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
