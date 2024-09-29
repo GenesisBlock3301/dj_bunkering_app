@@ -1,14 +1,12 @@
 import logging
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from django.views import View
 from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.template.loader import render_to_string
-from django.core.files.storage import default_storage
-from django.core.files.base import ContentFile
 from .helpers import (get_bunker_fuels, get_services, get_check_input_values, get_country_list, get_team_members,
-                      send_inquiry_email)
+                      send_inquiry_email, get_sister_concern)
 
 
 class HomeView(View):
@@ -16,6 +14,14 @@ class HomeView(View):
         our_sectors = get_services()
         return render(request, 'home.html', context={
             "our_sectors": our_sectors
+        })
+
+
+class ConcernView(View):
+    def get(self, request):
+        sister_concern = get_sister_concern()
+        return render(request, 'concern.html', context={
+            'sister_concer': sister_concern
         })
 
 
@@ -51,12 +57,7 @@ class CareerView(View):
             experience = request.POST.get('experience')
             city = request.POST.get('city')
             zipcode = request.POST.get('zipcode')
-            # Handle file upload
             uploaded_file = request.FILES['form_file']
-            file_name = default_storage.save(uploaded_file.name, ContentFile(uploaded_file.read()))
-            file_url = default_storage.url(file_name)
-            full_file_url = request.build_absolute_uri(file_url)
-
             # Send email
             subject = 'New Form Submission'
             to_email = 'freelancersifat380@gmail.com'
@@ -67,11 +68,11 @@ class CareerView(View):
                 'qualification': qualification,
                 'experience': experience,
                 'city': city,
-                'zipcode': zipcode,
-                'file_url': full_file_url,
+                'zipcode': zipcode
             })
             email = EmailMessage(subject, email_content, to=[to_email])
             email.content_subtype = 'html'
+            email.attach(uploaded_file.name, uploaded_file.read(), uploaded_file.content_type)
             email.send()
             messages.success(request, 'Message successfully sent to admin')
         except Exception as e:

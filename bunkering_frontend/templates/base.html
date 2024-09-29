@@ -3,13 +3,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock title %}</title>
-
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,
   400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
     <link rel="stylesheet" href="{% static '/assets/vendor/aos/aos.css' %}">
     <link rel="stylesheet" href="{% static '/assets/vendor/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static '/assets/vendor/boxicons/css/boxicons.min.css' %}">
@@ -25,27 +22,36 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <style>
-    {% block style %}
-    {% endblock %}
+.navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li > a {
+    color: black;
+}
+.navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
+    color: #47b2e4;
+}
+{% block style %}
+{% endblock %}
 </style>
 
 <body>
 <div id="app">
     <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top overflow-hidden" style="background-color: #375173">
-        <div class="container d-flex align-items-center">
-            <h1 class="logo me-auto">
-                <a href="#"><img src=""></a>
-            </h1>
+    <header id="header" class="fixed-top overflow-hidden" style="background-color: white">
+        <div class="container d-flex" style="justify-content: space-between">
+            <div class="">
+                <a href="#">
+                    <img style="max-width: 29%;" class="img-fluid" src="{% static 'assets/img.png' %}">
+                </a>
+            </div>
             <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a class="nav-link" href="/" id="home-link">Home</a></li>
-                    <li><a class="nav-link" href="/bunkering" id="bunker-link">Bunkering</a></li>
-                    <li><a class="nav-link" href="/team" id="team-link">Team</a></li>
-                    <li><a class="nav-link" href="/career" id="career-link">Career</a></li>
-                    <li><a class="nav-link" href="/quote" id="quote-link">Request A Quote</a></li>
-                    <li><a class="nav-link" href="/contact" id="contact-link">Contact</a></li>
-                    <li><a class="nav-link" href="/terms" id="terms-link">Terms & Condition</a></li>
+                <ul class="nav-list">
+                    <li><a class="nav-link " href="/" id="home-link"><strong>Home</strong></a></li>
+                    <li><a class="nav-link" href="/bunkering" id="bunker-link"><strong>Bunkering</strong></a></li>
+                    <li><a class="nav-link" href="/team" id="team-link"><strong>Team</strong></a></li>
+                    <li><a class="nav-link" href="/career" id="career-link"><strong>Career</strong></a></li>
+                    <li><a class="nav-link" href="/concern" id="career-link"><strong>Concern</strong></a></li>
+                    <li><a class="nav-link" href="/quote" id="quote-link"><strong>Request A Quote</strong></a></li>
+                    <li><a class="nav-link" href="/contact" id="contact-link"><strong>Contact</strong></a></li>
+                    <li><a class="nav-link" href="/terms" id="terms-link"><strong>Terms & Condition</strong></a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle" id="mobile-nav-toggle"></i>
             </nav>
@@ -60,12 +66,17 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 footer-contact">
-                        <h3>Arsha</h3>
+                        <h3>Sea Marine Fuel Ltd</h3>
                         <p>
-                            A108 Adam Street <br>
-                            New York, NY 535022<br>
-                            United States <br><br>
-                            <strong>Phone:</strong> +1 5589 55488 55<br>
+                            <strong>Head Office :</strong>
+                            6/6 Mowla chamber (4th floor),<br>
+                            Agrabad C/A, Chottogram, Bangladesh <br><br>
+                            <strong>Office Location :</strong>
+                            310/1 Anayet Bazar (1st floor) Kotwali, Chattogram<br><br>
+                            <strong>Mobile:</strong>+880 1708 519 681, <br>
+                            +880 1886 634 944 (Whatsapp 24/7)<br>
+                            <strong>Telephone:</strong>+8802333331259<br>
+                            <strong>Fax:</strong>+8802333326624<br>
                             <strong>Email:</strong> info@example.com<br>
                         </p>
                     </div>

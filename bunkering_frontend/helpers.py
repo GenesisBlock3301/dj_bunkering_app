@@ -6,7 +6,7 @@ def get_bunker_fuels():
     return [
         {"name": "LSMGO 0.1%", "description": "Low Sulphur Marine Gas Oil with sulphur level max 0.1%"},
         {"name": "LSMGO – 0.5 %", "description": "Low Sulphur Marine Gas Oil with sulphur level max 0.5%"},
-        {"name": "VLSFO – 0.5 %", "description": "Low Sulphur Fuel Oil with sulphur level max 0.5%"},
+        {"name": "VLSFO – 0.1/0.5 %", "description": "Low Sulphur Fuel Oil with sulphur level max 0.5%"},
         {"name": "HSD", "description": "High Speed Diesel for local barges and vessels"}
     ]
 
@@ -352,26 +352,30 @@ def get_team_members():
     return [
         {'name': "Mohammed Rafiqul Islam", 'designation': mark_safe("<b>Chairman</b>"),
          'img': '/assets/img/team/boss.jpeg',
-         'bio': mark_safe("<b>Mohammed Rafiqul Islam</b> started his journey as a broker in Khatungonj, "
-                          "Chittagong. Later on he joined Abul Khair Group and gathered many knowledges about Industry "
-                          "handling, Import – Export, Trading and many more. He started his own Import – Export firm named"
-                          " as RR Trading Corporation in 1980. After that he saw many problems in the bunkering Industry of "
-                          "Bangladesh then he saw the opportunity to bring a better solution to the Industry then Sea "
-                          "marine fuel suppliers & Co was established in 1990. Later He established Bricks manufacturing "
-                          "company in 2008 and Real estate company named RR RAINBOW BD HOLDINGS LTD in 2021.")},
+         'bio': mark_safe(
+             "<b>Mohammed Rafiqul Islam</b> started his journey as a broker in Khatungonj, "
+             "Chittagong. Later on he joined Abul Khair Group and gathered many knowledges about Industry "
+             "handling, Import – Export, Trading and many more. He started his own Import – Export firm "
+             "named"
+             "as RR Trading Corporation in 1980. After that he saw many problems in the bunkering "
+             "Industry of"
+             "Bangladesh then he saw the opportunity to bring a better solution to the Industry then Sea "
+             "marine fuel suppliers & Co was established in 1990. Later He established Bricks manufacturing "
+             "company in 2008 and Real estate company named RR RAINBOW BD HOLDINGS LTD in 2021.")},
         {
             'name': "Mohammed Amanur Rashid", 'designation': mark_safe("<b>Managing partner</b>"),
             'img': "/assets/img/team/amanur.jpeg",
-            'bio': mark_safe("<b>Md. Amanur Rashid</b> is a Marine Engineer by profession, before joining with us "
-                             "he served in American Bureau of Shipping (ABS), Singapore as Marine Surveyor. He was assigned in "
-                             "new building construction and successfully delivered three container ships and two offshore supply"
-                             " vessels as new construction surveyor. His career at a glance: After passing out from Marine "
-                             "Academy, Chittagong, Bangladesh in 1991 he joined Neptune Ship management services, Singapore "
-                             "as Assistant Engineer. He joined Anglo Eastern Ship management UK as a Second Engineer in 1998 "
-                             "and was promoted to the rank of Chief Engineer in 2003. He has enormous experience in Chemical"
-                             " Tanker, Crude Oil Tanker, Product Tanker and Bulk Carrier.Joined in Ocean Tankers Pte Ltd, "
-                             "Singapore, as Technical Superintendent in 2004. He also served DNV Petroleum Services Singapore,"
-                             " as Technical Advisor\n")},
+            'bio': mark_safe(
+                "<b>Md. Amanur Rashid</b> is a Marine Engineer by profession, before joining with us "
+                "he served in American Bureau of Shipping (ABS), Singapore as Marine Surveyor. He was assigned in "
+                "new building construction and successfully delivered three container ships and two offshore supply"
+                " vessels as new construction surveyor. His career at a glance: After passing out from Marine "
+                "Academy, Chittagong, Bangladesh in 1991 he joined Neptune Ship management services, Singapore "
+                "as Assistant Engineer. He joined Anglo Eastern Ship management UK as a Second Engineer in 1998 "
+                "and was promoted to the rank of Chief Engineer in 2003. He has enormous experience in Chemical"
+                " Tanker, Crude Oil Tanker, Product Tanker and Bulk Carrier.Joined in Ocean Tankers Pte Ltd, "
+                "Singapore, as Technical Superintendent in 2004. He also served DNV Petroleum Services Singapore,"
+                " as Technical Advisor\n")},
         {'name': "Mohammed Rezaul Islam ", 'designation': mark_safe("<b>Managing director</b>"),
          'img': "/assets/img/team/rezaul.jpeg",
          'bio': mark_safe(
@@ -402,3 +406,30 @@ def send_inquiry_email(data) -> dict:
         'agent': data.get('agent', ''),
         'message': data.get('message', '')
     }
+
+
+def get_sister_concern():
+    sister_concerns = [
+        {
+            "name": "RR RAINBOW BD",
+            "detail": "Founded in 2022, RR RAINBOW BD has emerged as a trailblazer in the realms of residential, commercial, shopping mall development, and land subdivision projects. The company, now headquartered in Chittagong, has achieved rapid growth and recognition thanks to its pioneering spirit, innovative practices, and unwavering commitment to sustainable real estate development. RR RAINBOW BD is a world-class company, fully committed to making life better. Through strategic collaborations with renowned professionals spanning diverse fields of expertise and a dedicated and passionate team, RR RAINBOW BD consistently ensures the timely and successful completion of its projects.",
+            "icon": '<i class="bx bx-building-house"></i>'
+        },
+        {
+            "name": "RR TRADING CORPORATION",
+            "detail": "RR TRADING CORPORATION is a sister concern of Sea Marine Fuel Supplier & Co and was established in 1992. Excellence is its motto. It has acquired wide experience in the Export-Import Business. Through this company, RR TRADING CORPORATION imports materials from various origins such as Stone Chips & Aggregates, Chemicals, Coal, Fruits, Paper, Food & Beverages, and other trading goods & commodities from sources outside of this country. RRTC is involved in business as an exporter, franchisee, clearing & forwarding agent, and supplier of various goods including finished and semi-finished goods of RRTC concerns to different parts of the world. RRTC is committed to providing quality products and services.",
+            "icon": '<i class="bx bx-briefcase"></i>'
+        },
+        {
+            "name": "BARODHONA BRICKS MANUFACTURING (BBM)",
+            "detail": "BARODHONA BRICKS MANUFACTURING, based in Sathkania, is equipped with efficient semi-automatic machinery and strong manpower. The experienced team, with its professional production area, has the capacity to manufacture up to 10,000 bricks per day. The product portfolio includes bricks in standard sizes for successful construction projects.",
+            "icon": '<i class="bx bx-building"></i>'
+        },
+        {
+            "name": "SEA TRADE INTERNATIONAL",
+            "detail": "SEA TRADE INTERNATIONAL shares the same business approach and commitment as Sea Marine Fuel Supplier & Co, being involved in similar maritime and fuel supply businesses.",
+            "icon": '<i class="bx bx-anchor"></i>'
+        }
+    ]
+    return sister_concerns
+
