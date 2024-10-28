@@ -84,7 +84,7 @@
                         <h4>Useful Links</h4>
                         <ul>
                             {% for item in menu_items %}
-                                <li><a href=""><i class="bx bx-chevron-right"></i>{{ item.name }}</a></li>
+                                <li><a href="{{ item.path }}"><i class="bx bx-chevron-right"></i>{{ item.name }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -139,7 +139,7 @@
                 $('#navbar').removeClass('navbar-mobile');
                 $('#mobile-nav-toggle').removeClass('bi-x').addClass('bi-list');
             }
-
+Sea Marine Fuel Ltd
             $('#mobile-nav-toggle').on('click', function() {
                 toggleMobileMenu();
             });
@@ -188,31 +188,26 @@
         });
         document.getElementById('formFile').addEventListener('change', function() {
             var fileInput = this;
-            var fileSize = fileInput.files[0].size; // in bytes
-            var maxSize = 1024 * 1024; // 1MB in bytes
-
-            // Check if file size exceeds the maximum allowed size
+            var fileSize = fileInput.files[0].size;
+            var maxSize = 1024 * 1024;
             if (fileSize > maxSize) {
                 alert('File size exceeds the maximum limit of 1MB. Please choose a smaller file.');
-                // Reset the file input to clear the selected file
                 fileInput.value = '';
-                // Update the file name display to show 'No file chosen'
                 document.getElementById('fileName').textContent = 'No file chosen';
             } else {
-                // File size is within the limit, display the selected file name
                 var fileName = fileInput.files[0].name;
                 document.getElementById('fileName').textContent = fileName;
             }
         });
         document.getElementById('formFile').addEventListener('change', function() {
             var fileInput = this;
-            var fileSize = fileInput.files[0].size; // Size in bytes
-            var maxSize = 1024 * 1024; // 1 MB in bytes
+            var fileSize = fileInput.files[0].size;
+            var maxSize = 1024 * 1024;
 
             if (fileSize > maxSize) {
                 document.getElementById('fileName').textContent = 'No file chosen';
                 document.getElementById('fileSizeError').style.display = 'block';
-                fileInput.value = ''; // Clear the selected file
+                fileInput.value = '';
             } else {
                 document.getElementById('fileName').textContent = fileInput.files[0].name;
                 document.getElementById('fileSizeError').style.display = 'none';

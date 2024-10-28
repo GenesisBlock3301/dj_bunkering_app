@@ -1,4 +1,6 @@
 import logging
+import os
+
 from django.shortcuts import render, redirect
 from django.views import View
 from django.core.mail import EmailMessage
@@ -60,7 +62,7 @@ class CareerView(View):
             uploaded_file = request.FILES['form_file']
             # Send email
             subject = 'New Form Submission'
-            to_email = 'freelancersifat380@gmail.com'
+            to_email = os.getenv('TO_EMAIL')
             email_content = render_to_string('email_template/career_template.html', {
                 'name': name,
                 'mobile': mobile,
@@ -97,7 +99,7 @@ class RequestQuotationView(View):
             subject = f"Inquiry from {context['company_name']}"
             html_message = render_to_string('email_template/quote_template.html', context)
             from_email = context['email']
-            to_email = 'freelancersifat380@gmail.com'
+            to_email = os.getenv('TO_EMAIL')
             email = EmailMessage(subject, html_message, from_email, [to_email])
             email.content_subtype = 'html'
             email.send()
@@ -119,7 +121,7 @@ class ContactView(View):
         message = data.get('message', '')
         subject = data.get('subject', '')
         if name and email and subject and message:
-            email_subject = f"Contact Form: {subject} (from {name})"
+            email_subject = f"Contact Form: {subject} (from {name})"# Set the email message to use HTML
             email_body_html = render_to_string('email_template/contact_template.html', {
                 'name': name, 'email': email, 'subject': subject, 'message': message,
             })
@@ -130,7 +132,7 @@ class ContactView(View):
                     from_email=email,
                     to=['freelancersifat380@gmail.com'],
                 )
-                email_message.content_subtype = "html"  # Set the email message to use HTML
+                email_message.content_subtype = "html"
                 email_message.send(fail_silently=False)
                 messages.success(request, 'Message successfully sent to admin')
             except Exception as e:

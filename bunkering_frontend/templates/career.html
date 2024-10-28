@@ -56,16 +56,16 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-md-4">
-                                <label for="name"><small>Qualification*</small></label>
-                                <input style="height: 50%" type="text" name="qualification" class="form-control" id="qualification" required>
+                                <label for="name"><small>Qualification</small></label>
+                                <input style="height: 50%" type="text" name="qualification" class="form-control" id="qualification" >
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="name"><small>Experience*</small></label>
-                                <input type="text" style="height: 50%" class="form-control" name="experience" id="experience" required>
+                                <label for="name"><small>Experience</small></label>
+                                <input type="text" style="height: 50%" class="form-control" name="experience" id="experience">
                             </div>
                             <div class="form-group col-md-4 mt-4">
                                 <div class="custom-select-wrapper">
-                                    <select class="custom-select" id="country" required>
+                                    <select class="custom-select" id="country">
                                         <option selected style="font-size: 10px">Select Country</option>
                                         {% for key, country in countryList.items %}
                                             <option value="{{ key }}"> {{ country }}</option>
@@ -76,12 +76,12 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-md-4">
-                                <label for="name"><small>City*</small></label>
-                                <input style="height: 50px" type="text" name="city" class="form-control" id="city" required>
+                                <label for="name"><small>City</small></label>
+                                <input style="height: 50px" type="text" name="city" class="form-control" id="city">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="name"><small>ZipCode*</small></label>
-                                <input type="text" style="height: 50px" class="form-control" name="zipcode" id="zipcode" required>
+                                <label for="name"><small>ZipCode</small></label>
+                                <input type="text" style="height: 50px" class="form-control" name="zipcode" id="zipcode">
                             </div>
                             <div class="form-group col-md-4 mt-2">
                                 <label for="formFile" class="btn btn-outline-secondary mt-6" style="outline: none">
