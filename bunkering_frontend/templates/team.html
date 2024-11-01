@@ -8,7 +8,6 @@
     }
 {% endblock %}
 {% block content %}
-    <!-- ======= Team Section ======= -->
     <section id="team" class="team section-bg mt-20">
         <div class="container" data-aos="fade-down">
             <div class="section-title">
@@ -29,12 +28,17 @@
                             </div>
                             <div class="member-info">
                                 <h4>{{ member.name }}</h4>
-                                <span>{{ member.designation }}</span>  <p style="display: block">{{ member.bio }}</p>  </div>
+                                <span>{{ member.designation }}</span>
+                                {% if member.bio %}
+                                    <p style="display: block">{{ member.bio }}</p>
+                                {% else %}
+                                    <div class="bio default-bio">Bio information is coming soon.</div>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
         </div>
     </section>
-    <!-- End Team Section -->
 {% endblock content %}
