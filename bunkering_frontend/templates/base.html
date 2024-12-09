@@ -73,10 +73,10 @@
                             Agrabad C/A, Chottogram, Bangladesh <br><br>
                             <strong>Office Location :</strong>
                             310/1 Anayet Bazar (1st floor) Kotwali, Chattogram<br><br>
-                            <strong>Mobile:</strong>+880 1708 519 681, <br>
-                            +880 1886 634 944 (Whatsapp 24/7)<br>
-                            <strong>Telephone:</strong>+8802333331259<br>
-                            <strong>Fax:</strong>+8802333326624<br>
+                            <strong>Mobile:</strong> <u>+880 1708 519 681</u><br>
+                            <strong>Whatsapp:</strong> <u>+880 1886 634 944</u><br>
+                            <strong>Telephone:</strong> <u>+8802333331259</u><br>
+                            <strong>Fax:</strong> <u>+8802333326624</u><br>
                             <strong>Email:</strong> info@example.com<br>
                         </p>
                     </div>
@@ -98,11 +98,10 @@
                     </div>
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Our Social Networks</h4>
-                        <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
                         <div class="social-links mt-3">
+                            <a href="https://wa.me/+8801886634944" class="instagram"><i class="bx bxl-whatsapp"></i></a>
                             <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                             <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
                             <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
                             <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
                         </div>
@@ -139,7 +138,7 @@
                 $('#navbar').removeClass('navbar-mobile');
                 $('#mobile-nav-toggle').removeClass('bi-x').addClass('bi-list');
             }
-Sea Marine Fuel Ltd
+
             $('#mobile-nav-toggle').on('click', function() {
                 toggleMobileMenu();
             });
@@ -154,19 +153,16 @@ Sea Marine Fuel Ltd
                 }
             });
 
-            // Mark active link based on URL path
             function setActiveLink() {
                 let path = window.location.pathname;
-                // Remove trailing slash if present
                 if (path.endsWith('/')) {
                     path = path.slice(0, -1);
                 }
-                console.log("Current path:", path); // Debugging line
+                console.log("Current path:", path);
 
                 $('#navbar ul li a').each(function() {
                     let href = $(this).attr('href');
-                    console.log("Element href:", href); // Debugging line
-                    // Remove trailing slash from href if present
+                    console.log("Element href:", href);
                     if (href && href.endsWith('/')) {
                         href = href.slice(0, -1);
                     }
@@ -183,26 +179,24 @@ Sea Marine Fuel Ltd
             setActiveLink();
         });
         document.getElementById('formFile').addEventListener('change', function() {
-            var _fileName = this.files[0].name;
-            document.getElementById('fileName').textContent = _fileName;
+            document.getElementById('fileName').textContent = this.files[0].name;
         });
         document.getElementById('formFile').addEventListener('change', function() {
-            var fileInput = this;
-            var fileSize = fileInput.files[0].size;
-            var maxSize = 1024 * 1024;
+            let fileInput = this;
+            let fileSize = fileInput.files[0].size;
+            let maxSize = 1024 * 1024;
             if (fileSize > maxSize) {
                 alert('File size exceeds the maximum limit of 1MB. Please choose a smaller file.');
                 fileInput.value = '';
                 document.getElementById('fileName').textContent = 'No file chosen';
             } else {
-                var fileName = fileInput.files[0].name;
-                document.getElementById('fileName').textContent = fileName;
+                document.getElementById('fileName').textContent = fileInput.files[0].name;
             }
         });
         document.getElementById('formFile').addEventListener('change', function() {
-            var fileInput = this;
-            var fileSize = fileInput.files[0].size;
-            var maxSize = 1024 * 1024;
+            let fileInput = this;
+            let fileSize = fileInput.files[0].size;
+            let maxSize = 1024 * 1024;
 
             if (fileSize > maxSize) {
                 document.getElementById('fileName').textContent = 'No file chosen';
@@ -221,9 +215,6 @@ Sea Marine Fuel Ltd
 <script src="{% static '/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
 <script src="{% static '/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
 <script src="{% static '/assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
-{#<script src="{% static '/assets/vendor/php-email-form/validate.js' %}"></script>#}
-
-<!-- Template Main JS File -->
 <script src="{% static '/assets/js/main.js' %}"></script>
 <script>
     window.onload = function() {

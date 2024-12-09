@@ -354,25 +354,21 @@ def get_team_members():
             'name': "Mohammed Rafiqul Islam", 'designation': mark_safe("<b>Chairman</b>"),
             'img': '/assets/img/team/boss.jpeg',
             'bio': mark_safe(
-                "<b>Mohammed Rafiqul Islam</b> started his journey as a broker in Khatungonj, "
-                "Chittagong. Later on, he joined Abul Khair Group and gathered much knowledge about industry "
-                "handling, import-export, trading, and more. He started his own import-export firm "
-                "named RR Trading Corporation in 1980. Later, he identified challenges in the bunkering "
-                "industry in Bangladesh and established Sea Marine Fuel Suppliers & Co in 1990 to bring "
-                "better solutions to the industry. He also established a brick manufacturing company in 2008 "
-                "and a real estate company, RR RAINBOW BD HOLDINGS LTD, in 2021."
+                "<b>Mohammed Rafiqul Islam</b> is an experienced entrepreneur based in Bangladesh. He founded RR "
+                "Trading Corporation in 1980, specializing in import-export. In 1990, he established Sea Marine Fuel "
+                "Suppliers & Co. to address challenges in the bunkering industry. He later expanded into brick "
+                "manufacturing in 2008 and real estate with the founding of RR Rainbow BD Holdings Ltd. in 2021."
             )
         },
         {
             'name': "Mohammed Amanur Rashid", 'designation': mark_safe("<b>Managing Partner</b>"),
             'img': "/assets/img/team/amanur.jpeg",
             'bio': mark_safe(
-                "<b>Md. Amanur Rashid</b> is a Marine Engineer by profession. Before joining us, he served "
-                "in the American Bureau of Shipping (ABS) in Singapore as a Marine Surveyor, overseeing "
-                "new building constructions. He has a rich background in marine engineering and has worked "
-                "with companies like Neptune Ship Management Services and Anglo Eastern Ship Management UK, "
-                "where he rose to the rank of Chief Engineer. His experience spans various tanker and "
-                "carrier types, and he has served in roles such as Technical Superintendent and Technical Advisor."
+                "<b>Md. Amanur Rashid</b> is a Marine Engineer with extensive experience in the maritime industry. "
+                "He has worked with the American Bureau of Shipping (ABS) in Singapore as a Marine Surveyor and "
+                "has held senior roles such as Chief Engineer, Technical Superintendent, and Technical Advisor with "
+                "companies like Neptune Ship Management Services and Anglo Eastern Ship Management UK. His expertise "
+                "spans various tanker and carrier types."
             )
         },
         {
@@ -380,30 +376,33 @@ def get_team_members():
             'designation': mark_safe("<b>Managing Director</b>"),
             'img': "/assets/img/team/rezaul.jpeg",
             'bio': mark_safe(
-                "<b>Mohammed Rezaul Islam</b> is the Managing Director of RR RAINBOW BD HOLDINGS LTD. "
-                "After completing his high school education at BAF SHAHEEN COLLEGE CHATTOGRAM in 2018, he "
-                "graduated from Independent University Bangladesh with a Bachelor of Business Administration "
-                "degree, majoring in Accounting and Finance. He strongly believes in using technological "
-                "innovation to enhance efficiency and foster organizational growth."
+                "<b>Mohammed Rezaul Islam</b> is the Managing Director of RR Rainbow BD Holdings Ltd. With a "
+                "background in Accounting and Finance, he brings a solid foundation in financial management and "
+                "strategic decision-making. He is focused on leveraging technological innovation to improve"
+                " operational efficiency and drive organizational growth, with an emphasis on long-term success "
+                "and team empowerment."
             )
         },
         {
             'name': "Rahman",
             'designation': mark_safe("<b>Coordinate Manager (Corresponding)</b>"),
             'img': "/assets/img/team/rahman.jpeg",
-            'bio': mark_safe("Rahman has extensive experience coordinating operations and ensuring effective communication within the organization.")
+            'bio': mark_safe("Rahman has extensive experience coordinating operations and ensuring effective "
+                             "communication within the organization.")
         },
         {
             'name': "Rumel",
             'designation': mark_safe("<b>General Manager (Accounts Department)</b>"),
             'img': "/assets/img/team/rumel.jpeg",
-            'bio': mark_safe("Rumel oversees the accounts department with a strong background in finance and management.")
+            'bio': mark_safe("Rumel oversees the accounts department with a strong background in "
+                             "finance and management.")
         },
         {
             'name': "Ansar",
             'designation': mark_safe("<b>Executive Director (Taxation Department)</b>"),
             'img': "/assets/img/team/ansar.jpeg",
-            'bio': mark_safe("Ansar brings a wealth of knowledge in tax management, guiding the taxation department efficiently.")
+            'bio': mark_safe("Ansar brings a wealth of knowledge in tax management, guiding the "
+                             "taxation department efficiently.")
         }
     ]
 
@@ -432,24 +431,41 @@ def get_sister_concern():
     sister_concerns = [
         {
             "name": "RR RAINBOW BD",
-            "detail": "Founded in 2022, RR RAINBOW BD has emerged as a trailblazer in the realms of residential, commercial, shopping mall development, and land subdivision projects. The company, now headquartered in Chittagong, has achieved rapid growth and recognition thanks to its pioneering spirit, innovative practices, and unwavering commitment to sustainable real estate development. RR RAINBOW BD is a world-class company, fully committed to making life better. Through strategic collaborations with renowned professionals spanning diverse fields of expertise and a dedicated and passionate team, RR RAINBOW BD consistently ensures the timely and successful completion of its projects.",
+            "detail": "Founded in 2022, RR RAINBOW BD has emerged as a trailblazer in the realms of residential, "
+                      "commercial, shopping mall development, and land subdivision projects. The company, now "
+                      "headquartered in Chittagong, has achieved rapid growth and recognition thanks to its "
+                      "pioneering spirit, innovative practices, and unwavering commitment to sustainable real estate "
+                      "development. RR RAINBOW BD is a world-class company, fully committed to making life better. "
+                      "Through strategic collaborations with renowned professionals spanning diverse fields of "
+                      "expertise and a dedicated and passionate team, RR RAINBOW BD consistently ensures the timely "
+                      "and successful completion of its projects.",
             "icon": '<i class="bx bx-building-house"></i>'
         },
         {
             "name": "RR TRADING CORPORATION",
-            "detail": "RR TRADING CORPORATION is a sister concern of Sea Marine Fuel Supplier & Co and was established in 1992. Excellence is its motto. It has acquired wide experience in the Export-Import Business. Through this company, RR TRADING CORPORATION imports materials from various origins such as Stone Chips & Aggregates, Chemicals, Coal, Fruits, Paper, Food & Beverages, and other trading goods & commodities from sources outside of this country. RRTC is involved in business as an exporter, franchisee, clearing & forwarding agent, and supplier of various goods including finished and semi-finished goods of RRTC concerns to different parts of the world. RRTC is committed to providing quality products and services.",
+            "detail": "RR TRADING CORPORATION is a sister concern of Sea Marine Fuel Supplier & Co and was established "
+                      "in 1992. Excellence is its motto. It has acquired wide experience in the Export-Import Business."
+                      "Through this company, RR TRADING CORPORATION imports materials from various origins such as "
+                      "Stone Chips & Aggregates, Chemicals, Coal, Fruits, Paper, Food & Beverages, and other trading "
+                      "goods & commodities from sources outside of this country. RRTC is involved in business as an "
+                      "exporter, franchisee, clearing & forwarding agent, and supplier of various goods including "
+                      "finished and semi-finished goods of RRTC concerns to different parts of the world. RRTC is "
+                      "committed to providing quality products and services.",
             "icon": '<i class="bx bx-briefcase"></i>'
         },
         {
             "name": "BARODHONA BRICKS MANUFACTURING (BBM)",
-            "detail": "BARODHONA BRICKS MANUFACTURING, based in Sathkania, is equipped with efficient semi-automatic machinery and strong manpower. The experienced team, with its professional production area, has the capacity to manufacture up to 10,000 bricks per day. The product portfolio includes bricks in standard sizes for successful construction projects.",
+            "detail": "BARODHONA BRICKS MANUFACTURING, based in Sathkania, is equipped with efficient semi-automatic "
+                      "machinery and strong manpower. The experienced team, with its professional production area, "
+                      "has the capacity to manufacture up to 10,000 bricks per day. The product portfolio includes "
+                      "bricks in standard sizes for successful construction projects.",
             "icon": '<i class="bx bx-building"></i>'
         },
         {
             "name": "SEA TRADE INTERNATIONAL",
-            "detail": "SEA TRADE INTERNATIONAL shares the same business approach and commitment as Sea Marine Fuel Supplier & Co, being involved in similar maritime and fuel supply businesses.",
+            "detail": "SEA TRADE INTERNATIONAL shares the same business approach and commitment as Sea Marine Fuel "
+                      "Supplier & Co, being involved in similar maritime and fuel supply businesses.",
             "icon": '<i class="bx bx-anchor"></i>'
         }
     ]
     return sister_concerns
-

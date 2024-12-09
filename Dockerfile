@@ -1,5 +1,8 @@
 FROM python:3.10.15-alpine
 
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
 LABEL maintainer="Nur Amin Sifat"
 
 WORKDIR /app
