@@ -66,7 +66,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 footer-contact">
-                        <h3>Sea Marine Fuel Ltd</h3>
+                        <h3>Sea Marine Fuels Ltd</h3>
                         <p>
                             <strong>Head Office :</strong>
                             6/6 Mowla chamber (4th floor),<br>
@@ -81,7 +81,7 @@
                         </p>
                     </div>
                     <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Useful Links</h4>
+                        <h4>Site Overview</h4>
                         <ul>
                             {% for item in menu_items %}
                                 <li><a href="{{ item.path }}"><i class="bx bx-chevron-right"></i>{{ item.name }}</a></li>
@@ -92,7 +92,7 @@
                         <h4>Our Services</h4>
                         <ul>
                             {% for service in our_sectors_footer %}
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">{{ service }}</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'index' %}">{{ service }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -113,10 +113,7 @@
 
         <div class="container footer-bottom clearfix">
             <div class="copyright">
-                &copy; Copyright <strong><span>Arsha</span></strong>. All Rights Reserved
-            </div>
-            <div class="credits">
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                &copy; Copyright <strong><span>SeamarinFuels Suppliers</span></strong>. All Rights Reserved.
             </div>
         </div>
     </footer>

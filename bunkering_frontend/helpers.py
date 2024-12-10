@@ -18,7 +18,8 @@ def get_services() -> List[dict]:
             "detail": "Physical bunker supply is the core of our operations, ensuring vessels are efficiently "
                       "fueled for their journeys. With our robust network and strategic partnerships, "
                       "we guarantee timely delivery and top-quality fuel, providing peace of mind to maritime "
-                      "operators worldwide.", "icon": '<i class="bx bx-gas-pump"></i>'
+                      "operators worldwide.",
+            "icon": '<i class="bx bx-gas-pump"></i>'
         },
         {
             "name": "Lubricant Supply",

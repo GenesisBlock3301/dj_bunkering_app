@@ -12,8 +12,8 @@ def get_footer_items() -> tuple[List, List[dict]]:
                    "Oil Carrying", "Real estate", "Bricks Manufacturing",
                    ]
     menu_items = [
-        {"path": "/", "name": "Home"}, {"path": "/bunker", "name": "Bunkering"},
-        {"path": "/team", "name": "Team"}, {"path": "/fleet", "name": "Fleet"},
+        {"path": "/", "name": "Home"}, {"path": "/bunkering", "name": "Bunkering"},
+        {"path": "/team", "name": "Team"},
         {"path": "/career", "name": "Career"}, {"path": "/quote", "name": "Request A Quote"},
         {"path": "/contact", "name": "Contact"}, {"path": "/terms", "name": "Terms & Conditions"}
     ]
