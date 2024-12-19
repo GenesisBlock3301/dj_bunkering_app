@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   web:
     build:
@@ -13,8 +15,24 @@ services:
     networks:
       - app_network
 
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - static_volume:/app/staticfiles
+      - certs:/etc/letsencrypt
+    depends_on:
+      - web
+    networks:
+      - app_network
+
 volumes:
   static_volume:
+  certs:
 
 networks:
   app_network:

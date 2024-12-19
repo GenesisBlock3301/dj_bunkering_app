@@ -47,6 +47,7 @@
                     <li><a class="nav-link " href="/" id="home-link"><strong>Home</strong></a></li>
                     <li><a class="nav-link" href="/bunkering" id="bunker-link"><strong>Bunkering</strong></a></li>
                     <li><a class="nav-link" href="/team" id="team-link"><strong>Team</strong></a></li>
+                    <li><a class="nav-link" href="/fleet" id="team-link"><strong>Fleet</strong></a></li>
                     <li><a class="nav-link" href="/career" id="career-link"><strong>Career</strong></a></li>
                     <li><a class="nav-link" href="/concern" id="career-link"><strong>Concern</strong></a></li>
                     <li><a class="nav-link" href="/quote" id="quote-link"><strong>Request A Quote</strong></a></li>
@@ -66,7 +67,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 footer-contact">
-                        <h3>Sea Marine Fuels Ltd</h3>
+                        <h3>Sea Marine Fuel Supplier's & Co.</h3>
                         <p>
                             <strong>Head Office :</strong>
                             6/6 Mowla chamber (4th floor),<br>
@@ -113,16 +114,17 @@
 
         <div class="container footer-bottom clearfix">
             <div class="copyright">
-                &copy; Copyright <strong><span>SeamarinFuels Suppliers</span></strong>. All Rights Reserved.
+                Copyright &copy; <span id="current-year"></span> <strong><span>Sea Marine Fuel Supplier's & Co</span></strong>. All Rights Reserved.
             </div>
         </div>
     </footer>
     <!-- End Footer -->
 
     <script>
-        // THis is header part
         $(document).ready(function() {
             let mobileMenu = false;
+
+            document.getElementById('current-year').textContent = new Date().getFullYear();
 
             function toggleMobileMenu() {
                 mobileMenu = !mobileMenu;

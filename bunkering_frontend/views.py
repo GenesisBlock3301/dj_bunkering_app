@@ -43,6 +43,12 @@ class TeamView(View):
         })
 
 
+class FleetView(View):
+    def get(self, request):
+        teamMembers = get_team_members()
+        return render(request, 'fleet.html')
+
+
 class CareerView(View):
     def get(self, request):
         countryList = get_country_list()

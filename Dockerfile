@@ -11,7 +11,6 @@ RUN apk add --no-cache --virtual .build-deps gcc musl-dev libffi-dev \
     && apk add --no-cache postgresql-libs
 
 COPY ./requirements.txt .
-
 RUN pip install --no-cache-dir -r requirements.txt \
     && pip install --no-cache-dir --upgrade setuptools \
     && pip install --no-cache-dir gunicorn
@@ -23,6 +22,7 @@ RUN mkdir -p /app/staticfiles \
 
 RUN apk del .build-deps
 
+
 EXPOSE 8000
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "dj_bunkering_app.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3", "--threads", "2"]

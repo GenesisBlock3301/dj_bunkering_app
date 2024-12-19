@@ -9,5 +9,6 @@ urlpatterns = [
     path('career/', CareerView.as_view(), name='career'),
     path('quote/', RequestQuotationView.as_view(), name='quote'),
     path('contact/', ContactView.as_view(), name='contact'),
-    path('terms/', TermsAndConditionView.as_view(), name='terms')
+    path('terms/', TermsAndConditionView.as_view(), name='terms'),
+    path('fleet/', FleetView.as_view(), name='fleet')
 ]

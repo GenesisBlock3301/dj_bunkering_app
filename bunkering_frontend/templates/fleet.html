@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Fleet {% endblock %}
+
+{% block style %}
+<style>
+    /* Styling for the text */
+    .text-center {
+        font-size: 1.2rem;
+        font-family: 'Arial', sans-serif;
+        color: #333; /* Dark text color */
+        text-transform: uppercase; /* Optional: makes text all caps */
+    }
+
+    /* Image styling */
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        transition: transform 0.3s ease; /* Smooth zoom effect */
+    }
+
+    .img-fluid:hover {
+        transform: scale(1.05); /* Zoom effect on hover */
+    }
+
+</style>
+{% endblock %}
+{% block content %}
+    <section id="team" class="team section-bg mt-20">
+        <div class="container" data-aos="fade-down">
+            <div class="section-title">
+                <h2>Fleet</h2>
+                <p>Our fleet consists of a diverse range of state-of-the-art vessels, each designed to meet the
+                    specific demands of our operations. We pride ourselves on maintaining the highest standards of
+                    safety, efficiency, and reliability. With our fleet, we are equipped to provide seamless
+                    transportation and logistical support, ensuring that every journey is completed on time and
+                    with precision. Our commitment to innovation and sustainability ensures that our fleet remains at
+                    the forefront of industry standards, driving progress and excellence in every project we undertake.
+                </p>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-lg-4 col-sm-6 mt-8" data-aos="zoom-in" data-aos-delay="1000">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <img src="{% static 'assets/fleet/img_1.jpeg'  %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <span class="text-center font-bold" style="margin-top: 50px !important;">Ot New Sea Queen Express 1 – 850 mts</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-6 mt-8" data-aos="zoom-in" data-aos-delay="1000">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <img src="{% static 'assets/fleet/img_2.jpeg'  %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <span class="text-center font-bold">Ot Choyon 1 – 560 mts</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-6 mt-8" data-aos="zoom-in" data-aos-delay="1000">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <img src="{% static 'assets/fleet/img_3.jpeg'  %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <span class="text-center font-bold">Ot Choyon  - 450 mts </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-lg-4 col-sm-6 mt-8" data-aos="zoom-in" data-aos-delay="1000">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <img src="{% static 'assets/fleet/img_1.jpeg'  %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <span class="text-center font-bold">Ot Queen of Bengal – 220 mts</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-6 mt-8" data-aos="zoom-in" data-aos-delay="1000">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <img src="{% static 'assets/fleet/img_2.jpeg'  %}" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <span class="text-center font-bold">Ot Amman – 150 mts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
