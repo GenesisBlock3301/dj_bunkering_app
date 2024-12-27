@@ -45,6 +45,8 @@ ROOT_URLCONF = 'dj_bunkering_app.urls'
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+IGNORE_PATTERNS = ['img/lines.png']
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
