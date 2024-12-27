@@ -17,7 +17,7 @@ services:
       - SECRET_KEY=${SECRET_KEY}
       - EMAIL_PASSWORD=${EMAIL_PASSWORD}
       - DEBUG=${DEBUG}
-    command: gunicorn project_name.wsgi:application --bind 0.0.0.0:8000 --workers 3
+    command: gunicorn dj_bunkering_app.wsgi:application --bind 0.0.0.0:8000 --workers 3
     networks:
       - app_network
 
