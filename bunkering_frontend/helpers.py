@@ -433,13 +433,12 @@ def get_sister_concern():
         {
             "name": "RR RAINBOW BD",
             "detail": "Founded in 2022, RR RAINBOW BD has emerged as a trailblazer in the realms of residential, "
-                      "commercial, shopping mall development, and land subdivision projects. The company, now "
-                      "headquartered in Chittagong, has achieved rapid growth and recognition thanks to its "
-                      "pioneering spirit, innovative practices, and unwavering commitment to sustainable real estate "
-                      "development. RR RAINBOW BD is a world-class company, fully committed to making life better. "
-                      "Through strategic collaborations with renowned professionals spanning diverse fields of "
-                      "expertise and a dedicated and passionate team, RR RAINBOW BD consistently ensures the timely "
-                      "and successful completion of its projects.",
+                      "commercial, shopping mall development, and land subdivision projects. The company, "
+                      "now headquartered in Chittagong, has achieved rapid growth and recognition thanks to "
+                      "its pioneering spirit, innovative practices, and unwavering commitment to sustainable real e"
+                      "state development. We are fully committed to making life better through strategic collaborations "
+                      "with renowned professionals spanning diverse fields of expertise and a dedicated and passionate "
+                      "team, we consistently ensures the timely and successful completion of its projects.",
             "icon": '<i class="bx bx-building-house"></i>'
         },
         {
