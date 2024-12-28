@@ -30,9 +30,9 @@ services:
       # Mount static files from the web service
       - static_volume:/app/staticfiles
 
-#      # Mount Certbot-generated certificates for SSL
-#      - ./ssl_keys/bunkering.crt:/etc/ssl/certs/bunkering.crt
-#      - ./ssl_keys/bunkering.key:/etc/ssl/private/bunkering.key
+      # Mount Certbot-generated certificates for SSL
+      - ./ssl_keys/bunkering.crt:/etc/ssl/certs/bunkering.crt
+      - ./ssl_keys/bunkering.key:/etc/ssl/private/bunkering.key
     depends_on:
       - web
     networks:
