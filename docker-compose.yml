@@ -18,21 +18,16 @@ services:
     networks:
       - app_network
 
-  nginx:
-    image: nginx:latest
-    container_name: nginx
+  caddy:
+    image: caddy:latest
+    container_name: caddy
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      # Mount your custom Nginx configuration
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      # Mount static files from the web service
+      - ./Caddyfile:/etc/caddy/Caddyfile
       - static_volume:/app/staticfiles
-
-#      # Mount Certbot-generated certificates for SSL
-#      - ./ssl_keys/bunkering.crt:/etc/ssl/certs/bunkering.crt
-#      - ./ssl_keys/bunkering.key:/etc/ssl/private/bunkering.key
+      - certs:/data
     depends_on:
       - web
     networks:
@@ -40,7 +35,7 @@ services:
 
 volumes:
   static_volume:  # Volume for static files
-  certs:          # (Optional) Persistent volume for certificates
+  certs:          # Volume for Caddy's data (certificates, etc.)
 
 networks:
   app_network:     # Network for inter-service communication
