@@ -1,4 +1,4 @@
-seamarinefuels.com {
+seamarinefuels.com, www.seamarinefuels.com {
     reverse_proxy web:8000
     root * /app/staticfiles
     file_server
