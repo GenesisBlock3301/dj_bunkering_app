@@ -15,14 +15,14 @@
                             </div>
                         {% endfor %}
                     </div>
-                    {% else %}
+                {% else %}
                     <p>Please submit the form below to request a quote.</p>
                 {% endif %}
             </div>
             <div class="container">
                 <div class="row">
                     <form action="{% url 'quote' %}" method="post" role="form" class="php-email-form" id="quote-form">
-                    {% csrf_token %}
+                        {% csrf_token %}
                         <h1 class="mb-3"><strong>Company Info</strong></h1>
                         <div class="row">
                             <div class="form-group col-md-3">
@@ -59,11 +59,11 @@
                                 {% for check_input in check_inputs_1 %}
                                     <div class="form-check">
                                         <input style="width: 15px; height: 15px; border-radius: 50%"
-                                                class="form-check-input"
-                                                type="radio"
-                                                name="select_value_1"
-                                                value="{{ check_input.value }}"
-{#                                               required
+                                               class="form-check-input"
+                                               type="radio"
+                                               name="select_value_1"
+                                               value="{{ check_input.value }}"
+                                                {# required
                                         />
                                         <label class="form-check-label" for="flexRadioDefault1">
                                             <small>{{ check_input.value }}</small>
@@ -94,7 +94,7 @@
                                         type="number"
                                         style="height: 35%"
                                         class="form-control"
-                                        name="quantity" required/>
+                                        name="quantity" min="1" required/>
                             </div>
                         </div>
                         <h1 class="mb-3"><strong>Part & Time Info</strong></h1>
@@ -168,7 +168,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                             <button type="submit" class="btn">Submit</button>
+                            <button type="submit" class="btn">Submit</button>
                         </div>
                     </form>
                 </div>

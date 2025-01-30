@@ -27,7 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bunkering_frontend'
+    'bunkering_frontend',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
@@ -131,8 +132,9 @@ REACT_APP_DIR = os.path.join(BASE_DIR, 'bunkering_frontend')
 
 # Email backend
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.hostinger.com'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
 EMAIL_HOST_USER = os.getenv('TO_EMAIL')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
+EMAIL_TIMEOUT = 30

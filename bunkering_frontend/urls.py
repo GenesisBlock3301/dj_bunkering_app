@@ -1,4 +1,6 @@
 from django.urls import path
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import StaticViewSitemap
 from .views import *
 
 urlpatterns = [
@@ -12,3 +14,8 @@ urlpatterns = [
     path('terms/', TermsAndConditionView.as_view(), name='terms'),
     path('fleet/', FleetView.as_view(), name='fleet')
 ]
+
+urlpatterns += [
+    path('sitemap.xml', sitemap, {'sitemaps': StaticViewSitemap}, name='sitemap'),
+]
+

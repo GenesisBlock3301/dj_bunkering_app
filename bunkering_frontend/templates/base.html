@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} {% endblock title %}</title>
+    <title>{{ header_title }}</title>
+    <meta name="description" content="{{ meta_description }}">
+    <link rel="icon" href="{% static 'assets/img.png' %}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,
   400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <link rel="stylesheet" href="{% static '/assets/vendor/aos/aos.css' %}">
@@ -16,20 +18,21 @@
     <link rel="stylesheet" href="{% static '/assets/vendor/swiper/swiper-bundle.min.css' %}">
     <link rel="stylesheet" href="{% static '/assets/css/fleet.css' %}">
     <link rel="stylesheet" href="{% static '/assets/css/style.css' %}">
-    <script type="module" crossorigin src="{% static '/assets/index-9C9j5OCG.js' %}"></script>
-    <link rel="stylesheet" crossorigin href="{% static '/assets/index-fBi0-1-U.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet"
+          href="{% static 'assets/css/bootstrap-icons.min.css' %}">
+    <script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
 </head>
 <style>
-.navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li > a {
-    color: black;
-}
-.navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
-    color: #47b2e4;
-}
-{% block style %}
-{% endblock %}
+    .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li > a {
+        color: black;
+    }
+
+    .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
+        color: #47b2e4;
+    }
+
+    {% block style %}
+    {% endblock %}
 </style>
 
 <body>
@@ -85,7 +88,8 @@
                         <h4>Site Overview</h4>
                         <ul>
                             {% for item in menu_items %}
-                                <li><a href="{{ item.path }}"><i class="bx bx-chevron-right"></i>{{ item.name }}</a></li>
+                                <li><a href="{{ item.path }}"><i class="bx bx-chevron-right"></i>{{ item.name }}</a>
+                                </li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -93,7 +97,8 @@
                         <h4>Our Services</h4>
                         <ul>
                             {% for service in our_sectors_footer %}
-                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'index' %}">{{ service }}</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'index' %}">{{ service }}</a>
+                                </li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -114,16 +119,15 @@
 
         <div class="container footer-bottom clearfix">
             <div class="copyright">
-                Copyright &copy; <span id="current-year"></span> <strong><span>Sea Marine Fuel Supplier's & Co</span></strong>. All Rights Reserved.
+                Copyright &copy; <span id="current-year"></span>
+                <strong><span>Sea Marine Fuel Supplier's & Co</span></strong>. All Rights Reserved.
             </div>
         </div>
     </footer>
-    <!-- End Footer -->
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             let mobileMenu = false;
-
             document.getElementById('current-year').textContent = new Date().getFullYear();
 
             function toggleMobileMenu() {
@@ -138,15 +142,15 @@
                 $('#mobile-nav-toggle').removeClass('bi-x').addClass('bi-list');
             }
 
-            $('#mobile-nav-toggle').on('click', function() {
+            $('#mobile-nav-toggle').on('click', function () {
                 toggleMobileMenu();
             });
 
-            $('#navbar ul li a').on('click', function() {
+            $('#navbar ul li a').on('click', function () {
                 closeMobileMenu();
             });
 
-            $(window).on('resize', function() {
+            $(window).on('resize', function () {
                 if ($(window).width() > 768) {
                     closeMobileMenu();
                 }
@@ -157,11 +161,9 @@
                 if (path.endsWith('/')) {
                     path = path.slice(0, -1);
                 }
-                console.log("Current path:", path);
 
-                $('#navbar ul li a').each(function() {
+                $('#navbar ul li a').each(function () {
                     let href = $(this).attr('href');
-                    console.log("Element href:", href);
                     if (href && href.endsWith('/')) {
                         href = href.slice(0, -1);
                     }
@@ -172,15 +174,16 @@
                     }
                 });
             }
-            $(document).ready(function() {
+
+            $(document).ready(function () {
                 setActiveLink();
             });
             setActiveLink();
         });
-        document.getElementById('formFile').addEventListener('change', function() {
+        document.getElementById('formFile').addEventListener('change', function () {
             document.getElementById('fileName').textContent = this.files[0].name;
         });
-        document.getElementById('formFile').addEventListener('change', function() {
+        document.getElementById('formFile').addEventListener('change', function () {
             let fileInput = this;
             let fileSize = fileInput.files[0].size;
             let maxSize = 1024 * 1024;
@@ -192,7 +195,7 @@
                 document.getElementById('fileName').textContent = fileInput.files[0].name;
             }
         });
-        document.getElementById('formFile').addEventListener('change', function() {
+        document.getElementById('formFile').addEventListener('change', function () {
             let fileInput = this;
             let fileSize = fileInput.files[0].size;
             let maxSize = 1024 * 1024;
@@ -215,10 +218,8 @@
 <script src="{% static '/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
 <script src="{% static '/assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
 <script src="{% static '/assets/js/main.js' %}"></script>
-<script>
-    window.onload = function() {
-        document.getElementById("quote-form").focus();
-    };
-</script>
+{% block js %}
+
+{% endblock %}
 </body>
 </html>

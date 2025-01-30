@@ -20,7 +20,12 @@
     <!-- ======= Quote Section ======= -->
     <section id="career" class="contact mt-20">
         <div class="container" data-aos="fade-down">
-
+            <div class="text-center">
+                <button type="submit" id="submitButton">Send Message</button>
+                <div id="spinner" class="spinner-border text-primary" role="status" style="display: none;">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
             <div class="section-title">
                 <h2>Career</h2>
                 {% if messages %}
@@ -38,30 +43,33 @@
             <div class="container">
                 <div class="row">
                     <form action="" method="post" role="form" enctype="multipart/form-data" class="php-email-form">
-                    {% csrf_token %}
+                        {% csrf_token %}
                         <h1 class="mb-3"><strong>Personal Info</strong></h1>
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for="name"><small>Name*</small></label>
-                                <input style="height: 50%" type="text" name="name" class="form-control" id="name" required>
+                                <input style="height: 50%" type="text" name="name" class="form-control" id="name">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="name"><small>Mobile*</small></label>
-                                <input type="text" style="height: 50%" class="form-control" name="mobile" id="mobile" required>
+                                <input placeholder="+880" type="text" style="height: 50%" class="form-control"
+                                       name="mobile" id="mobile">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="name"><small>Email*</small></label>
-                                <input type="email" name="email" style="height: 50%" class="form-control" id="email" required>
+                                <input type="email" name="email" style="height: 50%" class="form-control" id="email">
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for="name"><small>Qualification</small></label>
-                                <input style="height: 50%" type="text" name="qualification" class="form-control" id="qualification" >
+                                <input style="height: 50%" type="text" name="qualification" class="form-control"
+                                       id="qualification">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="name"><small>Experience</small></label>
-                                <input type="text" style="height: 50%" class="form-control" name="experience" id="experience">
+                                <input type="number" style="height: 50%" class="form-control" name="experience"
+                                       id="experience">
                             </div>
                             <div class="form-group col-md-4 mt-4">
                                 <div class="custom-select-wrapper">
@@ -81,7 +89,8 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="name"><small>ZipCode</small></label>
-                                <input type="text" style="height: 50px" class="form-control" name="zipcode" id="zipcode">
+                                <input type="text" style="height: 50px" class="form-control" name="zipcode"
+                                       id="zipcode">
                             </div>
                             <div class="form-group col-md-4 mt-2">
                                 <label for="formFile" class="btn btn-outline-secondary mt-6" style="outline: none">
@@ -91,7 +100,8 @@
                                        style="opacity: 0; position: absolute; top: -1000em;"
                                        id="formFile" accept=".pdf,.doc,.docx">
                                 <span id="fileName" style="display: block; margin-top: 10px">No file chosen</span>
-                                <span id="fileSizeError" style="display: none; color: red;">File size exceeds 1 MB limit</span>
+                                <span id="fileSizeError"
+                                      style="display: none; color: red;">File size exceeds 1 MB limit</span>
                             </div>
                         </div>
                         <div class="my-3">
@@ -107,6 +117,4 @@
             </div>
         </div>
     </section>
-    <!-- End Contact Section -->
-
 {% endblock content %}
