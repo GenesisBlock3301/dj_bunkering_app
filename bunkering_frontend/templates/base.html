@@ -31,17 +31,47 @@
         color: #47b2e4;
     }
 
+    #mobile-nav-toggle {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #000;
+    }
+
+    @media (max-width: 768px) {
+        #mobile-nav-toggle {
+            display: block;
+        }
+
+        #hero {
+            height: 73vh;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 991px) {
+        #hero {
+            height: 43vh !important;
+            text-align: center;
+        }
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
     {% block style %}
     {% endblock %}
 </style>
 
 <body>
 <div id="app">
-    <!-- ======= Header ======= -->
     <header id="header" class="fixed-top overflow-hidden" style="background-color: white">
         <div class="container d-flex" style="justify-content: space-between">
             <div class="">
-                <a href="#">
+                <a href="/">
                     <img style="max-width: 29%;" class="img-fluid" src="{% static 'assets/img.png' %}">
                 </a>
             </div>
@@ -64,7 +94,6 @@
     {% block content %}
 
     {% endblock content %}
-    <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="footer-top">
             <div class="container">
@@ -78,7 +107,7 @@
                             <strong>Office Location :</strong>
                             310/1 Anayet Bazar (1st floor) Kotwali, Chattogram<br><br>
                             <strong>Mobile:</strong> <u>+880 1708 519 681</u><br>
-                            <strong>Whatsapp:</strong> <u>+880 1886 634 944</u><br>
+                            <strong>Whatsapp:</strong> <u>+880 1708 519 681</u><br>
                             <strong>Telephone:</strong> <u>+8802333331259</u><br>
                             <strong>Fax:</strong> <u>+8802333326624</u><br>
                             <strong>Email:</strong>info@seamarinefuels.com<br>
@@ -105,7 +134,7 @@
                     <div class="col-lg-3 col-md-6 footer-links">
                         <h4>Our Social Networks</h4>
                         <div class="social-links mt-3">
-                            <a href="https://wa.me/+8801886634944" class="instagram"><i class="bx bxl-whatsapp"></i></a>
+                            <a href="https://wa.me/+8801708519681" class="instagram"><i class="bx bxl-whatsapp"></i></a>
                             <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                             <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
                             <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
@@ -116,7 +145,6 @@
                 </div>
             </div>
         </div>
-
         <div class="container footer-bottom clearfix">
             <div class="copyright">
                 Copyright &copy; <span id="current-year"></span>
@@ -179,35 +207,6 @@
                 setActiveLink();
             });
             setActiveLink();
-        });
-        document.getElementById('formFile').addEventListener('change', function () {
-            document.getElementById('fileName').textContent = this.files[0].name;
-        });
-        document.getElementById('formFile').addEventListener('change', function () {
-            let fileInput = this;
-            let fileSize = fileInput.files[0].size;
-            let maxSize = 1024 * 1024;
-            if (fileSize > maxSize) {
-                alert('File size exceeds the maximum limit of 1MB. Please choose a smaller file.');
-                fileInput.value = '';
-                document.getElementById('fileName').textContent = 'No file chosen';
-            } else {
-                document.getElementById('fileName').textContent = fileInput.files[0].name;
-            }
-        });
-        document.getElementById('formFile').addEventListener('change', function () {
-            let fileInput = this;
-            let fileSize = fileInput.files[0].size;
-            let maxSize = 1024 * 1024;
-
-            if (fileSize > maxSize) {
-                document.getElementById('fileName').textContent = 'No file chosen';
-                document.getElementById('fileSizeError').style.display = 'block';
-                fileInput.value = '';
-            } else {
-                document.getElementById('fileName').textContent = fileInput.files[0].name;
-                document.getElementById('fileSizeError').style.display = 'none';
-            }
         });
     </script>
 </div>
