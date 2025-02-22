@@ -1,4 +1,9 @@
 seamarinefuels.com, www.seamarinefuels.com {
+    @blocked_hosts {
+        header_regexp host ^(api\.ipify\.org|shadowserver\.org)$
+    }
+    respond @blocked_hosts 403
+
     reverse_proxy web:8000
     root * /app/staticfiles
     file_server

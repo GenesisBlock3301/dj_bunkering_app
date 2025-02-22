@@ -15,7 +15,10 @@ urlpatterns = [
     path('fleet/', FleetView.as_view(), name='fleet')
 ]
 
-urlpatterns += [
-    path('sitemap.xml', sitemap, {'sitemaps': StaticViewSitemap}, name='sitemap'),
-]
+sitemaps = {
+    'static': StaticViewSitemap()
+}
 
+urlpatterns += [
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+]

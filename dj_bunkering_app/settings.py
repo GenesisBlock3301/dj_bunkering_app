@@ -1,4 +1,6 @@
 import os
+
+from django.core.exceptions import DisallowedHost
 from dotenv import load_dotenv
 from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -15,7 +17,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['seamarinefuels.com', 'www.seamarinefuels.com', '127.0.0.1', '165.232.190.192', '0.0.0.0']
+ALLOWED_HOSTS = ['seamarinefuels.com', 'www.seamarinefuels.com', '165.232.190.192', '0.0.0.0', '127.0.0.1', ]
 
 
 # Application definition
@@ -41,6 +43,17 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+def ignore_disallowed_host(get_response):
+    def middleware(request):
+        try:
+            return get_response(request)
+        except DisallowedHost:
+            from django.http import HttpResponseForbidden
+            return HttpResponseForbidden("Forbidden")
+    return middleware
+
+MIDDLEWARE.append('dj_bunkering_app.settings.ignore_disallowed_host')
 
 ROOT_URLCONF = 'dj_bunkering_app.urls'
 
