@@ -4,7 +4,13 @@ seamarinefuels.com, www.seamarinefuels.com {
     }
     respond @blocked_hosts 403
 
-    reverse_proxy web:8000
+    reverse_proxy web:8000 {
+        header_up X-Forwarded-Proto {scheme}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-CSRFToken {http.request.header.CSRFToken}
+    }
+
     root * /app/staticfiles
     file_server
 }

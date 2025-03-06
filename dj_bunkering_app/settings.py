@@ -17,7 +17,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['seamarinefuels.com', 'www.seamarinefuels.com', '165.232.190.192', '0.0.0.0', '127.0.0.1', ]
+ALLOWED_HOSTS = ['seamarinefuels.com', 'www.seamarinefuels.com', '165.232.190.192', '127.0.0.1', ]
 
 
 # Application definition
@@ -153,6 +153,7 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
 EMAIL_TIMEOUT = 30
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://seamarinefuels.com',
+    "https://seamarinefuels.com",
+    "https://www.seamarinefuels.com",
 ]
 
