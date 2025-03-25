@@ -44,14 +44,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# def ignore_disallowed_host(get_response):
-#     def middleware(request):
-#         try:
-#             return get_response(request)
-#         except DisallowedHost:
-#             from django.http import HttpResponseForbidden
-#             return HttpResponseForbidden("Forbidden")
-#     return middleware
 
 class DebugHeadersMiddleware:
     def __init__(self, get_response):
@@ -61,9 +53,7 @@ class DebugHeadersMiddleware:
         print("Incoming request headers:", request.META)
         return self.get_response(request)
 
-# MIDDLEWARE.insert(0, 'path.to.DebugHeadersMiddleware')
-
-# MIDDLEWARE.append('dj_bunkering_app.settings.ignore_disallowed_host')
+MIDDLEWARE.insert(0, 'dj_bunkering_app.settings.DebugHeadersMiddleware')
 
 ROOT_URLCONF = 'dj_bunkering_app.urls'
 
