@@ -8,7 +8,7 @@ seamarinefuels.com, www.seamarinefuels.com {
         host seamarinefuels.com www.seamarinefuels.com
     }
 
-    reverse_proxy @valid_hosts web:8000 {
+    reverse_proxy web:8000 {
         header_up Host {http.request.host}
         header_up X-Forwarded-Proto {scheme}
         header_up X-Real-IP {remote_host}

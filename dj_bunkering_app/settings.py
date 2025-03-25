@@ -17,7 +17,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['seamarinefuels.com', 'www.seamarinefuels.com', '165.232.190.192', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['seamarinefuels.com', 'www.seamarinefuels.com', '165.232.190.192', '127.0.0.1']
 
 
 # Application definition
@@ -156,4 +156,5 @@ CSRF_TRUSTED_ORIGINS = [
     "https://seamarinefuels.com",
     "https://www.seamarinefuels.com",
 ]
-
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
