@@ -4,6 +4,16 @@ seamarinefuels.com, www.seamarinefuels.com {
     }
     respond @blocked_hosts 403
 
+    @wp_bots {
+        path /wp* /wordpress* /xmlrpc.php
+    }
+    respond @wp_bots 403
+
+    @disallowed_methods {
+        method PUT DELETE PATCH OPTIONS TRACE CONNECT
+    }
+    respond @disallowed_methods 405
+
     @valid_hosts {
         host seamarinefuels.com www.seamarinefuels.com
     }
