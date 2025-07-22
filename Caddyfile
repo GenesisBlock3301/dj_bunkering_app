@@ -14,14 +14,6 @@ seamarinefuels.com, www.seamarinefuels.com {
     }
     respond @disallowed_methods 405
 
-    @bad_requests {
-        path /wp* /wordpress* /xmlrpc.php
-    }
-    rate_limit @bad_requests {
-        zone wpbots 10s 5
-    }
-    respond @bad_requests 403
-
     @valid_hosts {
         host seamarinefuels.com www.seamarinefuels.com
     }
