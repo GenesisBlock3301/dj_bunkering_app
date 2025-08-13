@@ -6,6 +6,13 @@
     .pic {
     flex: 0 0 auto;
     }
+    .member.d-flex {
+    flex-wrap: wrap;  /* allow text to wrap and not push image out */
+    }
+    .member-info {
+    flex: 1 1 auto;  /* let text grow naturally */
+    }
+
 {% endblock %}
 {% block content %}
     <section id="team" class="team section-bg mt-20">
@@ -13,7 +20,8 @@
             <div class="section-title">
                 <h2>Team</h2>
                 <p>Our team is composed of dedicated professionals, each bringing a unique set of skills and experience
-                    to our organization. We are committed to delivering high-quality services that meet the diverse needs
+                    to our organization. We are committed to delivering high-quality services that meet the diverse
+                    needs
                     of our clients and aim to exceed expectations in every project. By combining expertise, attention to
                     detail, and a commitment to excellence, we build lasting partnerships based on trust and customer
                     satisfaction.</p>
@@ -24,7 +32,7 @@
                     <div class="col-md-12 col-lg-6 mt-8" data-aos="zoom-in" data-aos-delay="1000">
                         <div class="member d-flex align-items-start">
                             <div class="pic" style="display: block">
-                                <img src="{% static member.img  %}" class="img-fluid" alt="">
+                                <img src="{% static member.img %}" class="img-fluid" alt="">
                             </div>
                             <div class="member-info">
                                 <h4>{{ member.name }}</h4>
