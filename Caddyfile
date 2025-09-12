@@ -18,6 +18,11 @@ seamarinefuels.com, www.seamarinefuels.com {
         host seamarinefuels.com www.seamarinefuels.com
     }
 
+    handle_path /static/* {
+        root * /app/staticfiles
+        file_server
+    }
+
     reverse_proxy web:8000 {
         header_up Host {http.request.host}
         header_up X-Forwarded-Proto {scheme}
@@ -26,6 +31,4 @@ seamarinefuels.com, www.seamarinefuels.com {
         header_up X-CSRFToken {http.request.header.CSRFToken}
     }
 
-    root * /app/staticfiles
-    file_server
 }
