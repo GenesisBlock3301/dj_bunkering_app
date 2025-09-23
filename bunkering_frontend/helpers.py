@@ -360,17 +360,6 @@ def get_team_members():
                 "Suppliers & Co. to address challenges in the bunkering industry. He later expanded into brick "
                 "manufacturing in 2008 and real estate with the founding of RR Rainbow BD Holdings Ltd. in 2021."
             )
-        },{
-            'name': "Md. Rafiqullah Khan", 'designation': mark_safe("<b>Managing Partner</b>"),
-            'img': '/assets/img/team/rafiqullah_khan.png',
-            'bio': mark_safe(
-                "<b>Md. Rafiqullah Khan</b> is an experienced entrepreneur and Managing Partner of Sea Marine Fuel "
-                "Suppliers & Co. Known for his vision and strategic leadership, he has successfully led and expanded "
-                "diverse business ventures in Bangladesh, while also making a significant contribution to Bangladesh’s "
-                "education sector.<br>"
-                "<b>Contact:</b> <u>+8801795746815</u><br>"
-                "<b>Email:</b> <u>rafiqullah@seamarinefuels.com</u><br>"
-            )
         },
         {
             'name': "Mohammed Amanur Rashid", 'designation': mark_safe("<b>Managing Partner</b>"),
