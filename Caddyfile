@@ -14,6 +14,17 @@ seamarinefuels.com, www.seamarinefuels.com {
     }
     respond @disallowed_methods 405
 
+    @php_scans {
+        path *.php
+    }
+    respond @php_scans 444
+
+    @exploit_scans {
+        path /.env /.git* /vendor* /config* /backup* /old*
+    }
+    respond @exploit_scans 444
+
+
     @valid_hosts {
         host seamarinefuels.com www.seamarinefuels.com
     }
