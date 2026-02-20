@@ -1,4 +1,5 @@
 import os
+import logging
 
 from django.core.exceptions import DisallowedHost
 from dotenv import load_dotenv
@@ -56,7 +57,36 @@ class DebugHeadersMiddleware:
         print("Incoming request headers:", request.META)
         return self.get_response(request)
 
-MIDDLEWARE.insert(0, 'dj_bunkering_app.settings.DebugHeadersMiddleware')
+
+class EndpointLoggerMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+        self.logger = logging.getLogger("endpoint")
+
+    def __call__(self, request):
+        method = request.method
+        path = request.get_full_path()
+        response = self.get_response(request)
+        status = getattr(response, "status_code", None)
+        content_type = response.get("Content-Type", "")
+        body_preview = ""
+        content = getattr(response, "content", None)
+        if isinstance(content, (bytes, bytearray)) and ("text" in content_type or "json" in content_type):
+            try:
+                body_preview = content.decode("utf-8", errors="ignore")[:500]
+            except Exception:
+                body_preview = ""
+        self.logger.info(
+            "endpoint %s %s status=%s response_preview=%s",
+            method,
+            path,
+            status,
+            body_preview,
+        )
+        return response
+
+MIDDLEWARE.insert(0, 'dj_bunkering_app.settings.EndpointLoggerMiddleware')
+MIDDLEWARE.insert(1, 'dj_bunkering_app.settings.DebugHeadersMiddleware')
 
 ROOT_URLCONF = 'dj_bunkering_app.urls'
 
