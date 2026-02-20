@@ -22,7 +22,7 @@ services:
       - FROM_EMAIL=${FROM_EMAIL}
       - EMAIL_PASSWORD=${EMAIL_PASSWORD}
       - DEBUG=${DEBUG}
-      - DJANGO_ALLOWED_HOSTS=seamarinefuels.com,localhost,127.0.0.1
+      - DJANGO_ALLOWED_HOSTS=seamarinefuels.com,www.seamarinefuels.com,165.232.190.192,localhost,127.0.0.1,0.0.0.0
     networks:
       - app_network
 
