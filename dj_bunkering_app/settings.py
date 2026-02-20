@@ -17,7 +17,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['seamarinefuels.com', 'www.seamarinefuels.com', '165.232.190.192', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = os.getenv(
+    'DJANGO_ALLOWED_HOSTS',
+    'seamarinefuels.com,www.seamarinefuels.com,165.232.190.192,127.0.0.1,localhost,0.0.0.0'
+).split(',')
 
 
 # Application definition
