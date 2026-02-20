@@ -19,6 +19,7 @@ services:
     environment:
       - TO_EMAIL=${TO_EMAIL}
       - SECRET_KEY=${SECRET_KEY}
+      - FROM_EMAIL=${FROM_EMAIL}
       - EMAIL_PASSWORD=${EMAIL_PASSWORD}
       - DEBUG=${DEBUG}
       - DJANGO_ALLOWED_HOSTS=seamarinefuels.com,localhost,127.0.0.1
