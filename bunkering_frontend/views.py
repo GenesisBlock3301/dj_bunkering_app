@@ -94,7 +94,7 @@ class CareerView(View):
             uploaded_file = request.FILES['form_file']
             # Send email
             subject = 'New Form Submission'
-            to_email = os.getenv('TO_EMAIL')
+            to_email = settings.EMAIL_HOST_USER
             email_content = render_to_string('email_template/career_template.html', {
                 'name': name,
                 'mobile': mobile,
@@ -138,7 +138,7 @@ class RequestQuotationView(View):
             subject = f"Inquiry from {context['company_name']}"
             html_message = render_to_string('email_template/quote_template.html', context)
             from_email = settings.DEFAULT_FROM_EMAIL
-            to_email = os.getenv('TO_EMAIL')
+            to_email = settings.EMAIL_HOST_USER
             email = EmailMessage(subject, html_message, from_email, [to_email])
             email.content_subtype = 'html'
             email.send()
@@ -165,7 +165,7 @@ class ContactView(View):
         message = data.get('message', '')
         subject = data.get('subject', '')
         from_email = settings.DEFAULT_FROM_EMAIL
-        to_email = os.getenv('TO_EMAIL')
+        to_email = settings.EMAIL_HOST_USER
         if name and email and subject and message:
             email_subject = f"Contact Form: {subject} (from {name})"# Set the email message to use HTML
             email_body_html = render_to_string('email_template/contact_template.html', {
