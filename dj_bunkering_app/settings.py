@@ -49,15 +49,6 @@ MIDDLEWARE = [
 ]
 
 
-class DebugHeadersMiddleware:
-    def __init__(self, get_response):
-        self.get_response = get_response
-
-    def __call__(self, request):
-        print("Incoming request headers:", request.META)
-        return self.get_response(request)
-
-
 class EndpointLoggerMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
@@ -66,6 +57,8 @@ class EndpointLoggerMiddleware:
     def __call__(self, request):
         method = request.method
         path = request.get_full_path()
+        if path.startswith("/static/") or path.startswith("/media/") or path.startswith("/favicon") or path.startswith("/apple-touch-icon"):
+            return self.get_response(request)
         response = self.get_response(request)
         status = getattr(response, "status_code", None)
         content_type = response.get("Content-Type", "")
@@ -86,7 +79,6 @@ class EndpointLoggerMiddleware:
         return response
 
 MIDDLEWARE.insert(0, 'dj_bunkering_app.settings.EndpointLoggerMiddleware')
-MIDDLEWARE.insert(1, 'dj_bunkering_app.settings.DebugHeadersMiddleware')
 
 ROOT_URLCONF = 'dj_bunkering_app.urls'
 
