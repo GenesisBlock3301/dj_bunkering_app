@@ -176,6 +176,7 @@ EMAIL_USE_SSL = True
 EMAIL_HOST_USER = os.getenv('TO_EMAIL')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
 EMAIL_TIMEOUT = 30
+DEFAULT_FROM_EMAIL = os.getenv('FROM_EMAIL') or EMAIL_HOST_USER
 
 CSRF_TRUSTED_ORIGINS = [
     "https://seamarinefuels.com",

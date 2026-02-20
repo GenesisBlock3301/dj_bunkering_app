@@ -7,6 +7,7 @@ from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.template.loader import render_to_string
+from django.conf import settings
 from .helpers import (get_bunker_fuels, get_services, get_check_input_values, get_country_list, get_team_members,
                       send_inquiry_email, get_sister_concern)
 
@@ -103,7 +104,7 @@ class CareerView(View):
                 'city': city,
                 'zipcode': zipcode
             })
-            from_email = os.getenv('FROM_EMAIL')
+            from_email = settings.DEFAULT_FROM_EMAIL
             email = EmailMessage(subject, email_content, from_email=from_email, to=[to_email])
             email.content_subtype = 'html'
             email.attach(uploaded_file.name, uploaded_file.read(), uploaded_file.content_type)
@@ -136,7 +137,7 @@ class RequestQuotationView(View):
             context = send_inquiry_email(data)
             subject = f"Inquiry from {context['company_name']}"
             html_message = render_to_string('email_template/quote_template.html', context)
-            from_email = os.getenv('FROM_EMAIL')
+            from_email = settings.DEFAULT_FROM_EMAIL
             to_email = os.getenv('TO_EMAIL')
             email = EmailMessage(subject, html_message, from_email, [to_email])
             email.content_subtype = 'html'
@@ -163,7 +164,7 @@ class ContactView(View):
         email = data.get('email', '')
         message = data.get('message', '')
         subject = data.get('subject', '')
-        from_email = os.getenv('FROM_EMAIL')
+        from_email = settings.DEFAULT_FROM_EMAIL
         to_email = os.getenv('TO_EMAIL')
         if name and email and subject and message:
             email_subject = f"Contact Form: {subject} (from {name})"# Set the email message to use HTML
