@@ -1,7 +1,7 @@
  # =========================
 # Sea Marine Fuels – Dev Runner
 # =========================
-COMPOSE := docker compose
+COMPOSE := docker-compose
 COMPOSE_FILE := -f docker-compose.yml
 
 .DEFAULT_GOAL := help
