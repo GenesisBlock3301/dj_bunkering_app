@@ -179,6 +179,9 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
 EMAIL_TIMEOUT = 30
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+# Demo mode: skip SMTP and show “please email …” instead
+MOCK_EMAIL = os.getenv("MOCK_EMAIL", "False") == "True"
+
 CSRF_TRUSTED_ORIGINS = [
     "https://seamarinefuels.com",
     "https://www.seamarinefuels.com",

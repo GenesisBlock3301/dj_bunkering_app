@@ -1,3 +1,8 @@
+# Drop every Host that is NOT ours
+:80 {
+    @badhost not host seamarinefuels.com www.seamarinefuels.com
+    respond @badhost 444
+}
 seamarinefuels.com, www.seamarinefuels.com {
     @blocked_hosts {
         header_regexp host ^(api\.ipify\.org|shadowserver\.org)$

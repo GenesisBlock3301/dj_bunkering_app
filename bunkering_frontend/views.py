@@ -108,10 +108,14 @@ class CareerView(View):
             email = EmailMessage(subject, email_content, from_email=from_email, to=[to_email])
             email.content_subtype = 'html'
             email.attach(uploaded_file.name, uploaded_file.read(), uploaded_file.content_type)
-            logger.info('Email sending....')
-            email.send()
-            logger.info('Email sent successfully')
-            messages.success(request, 'Message successfully sent to admin')
+            if settings.MOCK_EMAIL:
+                logger.info('MOCK-CAREER email to:%s subject:%s (with attachment %s)', to_email, subject, uploaded_file.name)
+                messages.warning(request, f'Please send your application directly to {settings.EMAIL_HOST_USER}')
+            else:
+                logger.info('Email sending....')
+                email.send()
+                logger.info('Email sent successfully')
+                messages.success(request, 'Message successfully sent to admin')
         except Exception as e:
             logger.error('Error sending email: %s', e)
             messages.error(request, f"Sending message failed: {e}")
@@ -141,8 +145,12 @@ class RequestQuotationView(View):
             to_email = settings.EMAIL_HOST_USER
             email = EmailMessage(subject, html_message, from_email, [to_email])
             email.content_subtype = 'html'
-            email.send()
-            messages.success(request, 'Quotation send successfully.')
+            if settings.MOCK_EMAIL:
+                logger.info('MOCK-QUOTE email to:%s subject:%s body-preview:%.200s', to_email, subject, html_message)
+                messages.warning(request, f'Please send your quotation directly to {settings.EMAIL_HOST_USER}')
+            else:
+                email.send()
+                messages.success(request, 'Quotation sent successfully.')
         except Exception as e:
             logging.error('Error sending email: %s', e)
             messages.error(request, f"Sending sending quotation failed: {e}")
@@ -179,8 +187,12 @@ class ContactView(View):
                     to=[to_email],
                 )
                 email_message.content_subtype = "html"
-                email_message.send(fail_silently=False)
-                messages.success(request, 'Message successfully sent to admin')
+                if settings.MOCK_EMAIL:
+                    logger.info('MOCK-CONTACT email to:%s subject:%s body-preview:%.200s', to_email, email_subject, email_body_html)
+                    messages.warning(request, f'Please send your message directly to {settings.EMAIL_HOST_USER}')
+                else:
+                    email_message.send(fail_silently=False)
+                    messages.success(request, 'Message successfully sent to admin')
             except Exception as e:
                 logging.error('Error sending email: %s', e)
                 messages.error(request, f"Sending message failed: {e}")
